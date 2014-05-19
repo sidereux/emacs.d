@@ -11,7 +11,7 @@
         (package-install package)
       (progn
         (package-refresh-contents)
-        (require-package 'package)))))
+        (require-package package)))))
 
 (package-initialize)
 

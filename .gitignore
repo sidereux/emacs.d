@@ -1,4 +1,5 @@
 *~
+*.swp
 ac-comphist.dat
 auto-save-list
 ede-projects.el
