@@ -12,7 +12,5 @@
 (setq-default tab-width 4)
 (customize-variable (quote tab-stop-list))
 
-; Set javascript indents to 2 spaces
-(setq js-indent-level 2)
 
 (provide 'init-indent)

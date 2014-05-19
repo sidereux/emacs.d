@@ -7,3 +7,4 @@
 ; load init-elpa before init-auto-complete
 (require 'init-auto-complete)
 (require 'init-cedet)
+(require 'init-javascript)
