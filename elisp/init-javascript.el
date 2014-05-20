@@ -9,4 +9,8 @@
 
 ; set js2-mode as major mode for javascript
 (add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
+
+; set js2-mode indent
+(setq js2-basic-offset 2)
+
 (provide 'init-javascript)
