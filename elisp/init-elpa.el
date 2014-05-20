@@ -4,6 +4,7 @@
 (add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/"))
 (add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/"))
 
+; require package function
 (defun require-package (package &optional refresh)
   (if (package-installed-p package)
       t
