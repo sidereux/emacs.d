@@ -18,5 +18,7 @@
 ; Line number
 (global-linum-mode t)
 
+; Show Paren Mode
+(show-paren-mode t)
 
 (provide 'init-customize)

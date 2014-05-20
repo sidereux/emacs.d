@@ -7,4 +7,6 @@
 ; Set javascript indents to 2 spaces
 (setq js-indent-level 2)
 
+; set js2-mode as major mode for javascript
+(add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
 (provide 'init-javascript)
