@@ -21,4 +21,6 @@
 ; Show Paren Mode
 (show-paren-mode t)
 
+; Make the search case-sensitive
+(setq-default case-fold-search nil)
 (provide 'init-customize)
