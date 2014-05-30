@@ -8,4 +8,3 @@
 (require 'init-auto-complete)
 (require 'init-cedet)
 (require 'init-javascript)
-
