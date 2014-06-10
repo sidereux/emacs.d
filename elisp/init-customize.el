@@ -21,6 +21,9 @@
 ; Show Paren Mode
 (show-paren-mode t)
 
+; hilight current line
+(global-hl-line-mode t)
+
 ; Make the search case-sensitive
 (setq-default case-fold-search nil)
 (provide 'init-customize)
