@@ -5,12 +5,14 @@
 (require 'init-indent)
 
 ; load init-elpa before init-auto-complete
+(require 'init-autopair)
 (require 'init-highlight-indentation)
 (require 'init-auto-complete)
 (require 'init-cedet)
 (require 'init-javascript)
 (require 'init-python)
 (require 'init-c)
+
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
