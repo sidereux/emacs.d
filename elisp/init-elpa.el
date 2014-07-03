@@ -6,14 +6,19 @@
 (add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/"))
 
 ; require package function
-(defun require-package (package &optional refresh)
+; If package already installed, then skip
+; If package name in package-archive-contents or no-refresh is t,
+; then install the package
+; else refresh package contents and call require-package again
+; with no-refresh
+(defun require-package (package &optional no-refresh)
   (if (package-installed-p package)
       t
-    (if (or (assoc package package-archive-contents) refresh)
+    (if (or (assoc package package-archive-contents) no-refresh)
         (package-install package)
       (progn
         (package-refresh-contents)
-        (require-package package)))))
+        (require-package package t)))))
 
 (package-initialize)
 
