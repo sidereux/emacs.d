@@ -26,4 +26,8 @@
 
 ; Make the search case-sensitive
 (setq-default case-fold-search nil)
+
+; bind newline-and-indent to RET
+(define-key global-map (kbd "RET") 'newline-and-indent)
+
 (provide 'init-customize)
