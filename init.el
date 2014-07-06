@@ -5,6 +5,7 @@
 (require 'init-indent)
 
 ; load init-elpa before init-auto-complete
+(require 'init-flycheck)
 (require 'init-autopair)
 (require 'init-highlight-indentation)
 (require 'init-auto-complete)
