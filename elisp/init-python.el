@@ -1,9 +1,6 @@
 ; set highlight indentation
 (add-hook 'python-mode-hook 'highlight-indentation-mode-hook)
 
-(require-package 'elpy)
-
-(elpy-enable)
 
 ; elpy disabled completion with RET key
 ; which is annoying
