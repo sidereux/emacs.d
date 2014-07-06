@@ -12,14 +12,14 @@
 ; then install the package
 ; else refresh package contents and call require-package again
 ; with no-refresh
-(defun require-package (package &optional no-refresh)
-  (if (package-installed-p package)
+(defun require-package (package &optional min-version no-refresh)
+  (if (package-installed-p package min-version)
       t
     (if (or (assoc package package-archive-contents) no-refresh)
         (package-install package)
       (progn
         (package-refresh-contents)
-        (require-package package t)))))
+        (require-package package min-version t)))))
 
 (package-initialize)
 
