@@ -1,10 +1,12 @@
-(add-to-list 'load-path (expand-file-name "elisp" user-emacs-directory))
+(add-to-list 'load-path (expand-file-name "lisp" user-emacs-directory))
+(add-to-list 'load-path (expand-file-name "site-lisp" user-emacs-directory))
 
 (require 'init-elpa)
-(require 'init-customize)
+(require 'init-common)
 (require 'init-indent)
 
 ; load init-elpa before init-auto-complete
+(require 'init-gtags)
 (require 'init-flycheck)
 (require 'init-autopair)
 (require 'init-highlight-indentation)

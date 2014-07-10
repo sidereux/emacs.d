@@ -30,4 +30,4 @@
 ; bind newline-and-indent to RET
 (define-key global-map (kbd "RET") 'newline-and-indent)
 
-(provide 'init-customize)
+(provide 'init-common)

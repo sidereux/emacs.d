@@ -5,5 +5,8 @@
 ; enable flycheck-mode for c-mode
 (add-hook 'c-mode-common-hook 'flycheck-mode)
 
+; enable gtags-mode
+(add-hook 'c-mode-common-hook 'gtags-mode)
+; (add-hook 'c-mode-common-hook '(lambda () (gtags-mode 1)))
 
 (provide 'init-c)
