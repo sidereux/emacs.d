@@ -15,6 +15,7 @@
 (require 'init-javascript)
 (require 'init-python)
 (require 'init-c)
+(require 'init-evil)
 
 
 (custom-set-variables
