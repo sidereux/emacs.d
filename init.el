@@ -16,6 +16,7 @@
 (require 'init-python)
 (require 'init-c)
 (require 'init-evil)
+(require 'init-smex)
 
 
 (custom-set-variables
