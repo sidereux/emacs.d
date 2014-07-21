@@ -6,13 +6,13 @@
 (require 'init-indent)
 
 ; load init-elpa before init-auto-complete
+(require 'init-cedet)
 (require 'init-themes)
 (require 'init-gtags)
 (require 'init-flycheck)
 (require 'init-autopair)
 (require 'init-highlight-indentation)
 (require 'init-auto-complete)
-(require 'init-cedet)
 (require 'init-javascript)
 (require 'init-python)
 (require 'init-c)
@@ -22,6 +22,7 @@
 (require 'init-helm)
 (require 'init-ido)
 (require 'init-uniquify)
+(require 'init-yasnippet)
 
 
 (custom-set-variables
