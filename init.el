@@ -21,6 +21,7 @@
 (require 'init-anzu)
 (require 'init-helm)
 (require 'init-ido)
+(require 'init-uniquify)
 
 
 (custom-set-variables
