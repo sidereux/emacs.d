@@ -6,6 +6,7 @@
 (require 'init-indent)
 
 ; load init-elpa before init-auto-complete
+(require 'init-guru)
 (require 'init-cedet)
 (require 'init-themes)
 (require 'init-gtags)
