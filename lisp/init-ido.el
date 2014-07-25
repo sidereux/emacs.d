@@ -14,5 +14,7 @@
 (setq ido-use-faces nil)
 (setq ido-use-virtual-buffers t)
 
+(setq ido-auto-merge-delay-time 2)
+
 
 (provide 'init-ido)
