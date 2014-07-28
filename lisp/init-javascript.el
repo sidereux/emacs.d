@@ -12,7 +12,7 @@
 (setq js2-basic-offset 2)
 
 ;; set highlight indentation
-(add-hook 'js2-mode-hook 'highlight-indentation-mode-hook)
+(add-hook 'js2-mode-hook 'highlight-indentation-mode)
 
 
 (provide 'init-javascript)

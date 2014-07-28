@@ -26,4 +26,7 @@
 
 (add-hook 'c-mode-common-hook 'my:add-semantic-to-autocomplete)
 
+;; enable highlight indentation
+(add-hook 'c-mode-common-hook 'highlight-indentation-mode)
+
 (provide 'init-c)
