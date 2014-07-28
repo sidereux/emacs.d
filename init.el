@@ -15,6 +15,7 @@
 (require 'init-highlight-indentation)
 (require 'init-auto-complete)
 (require 'init-javascript)
+(require 'init-coffee)
 (require 'init-python)
 (require 'init-c)
 (require 'init-evil)
@@ -23,7 +24,6 @@
 (require 'init-helm)
 (require 'init-ido)
 (require 'init-uniquify)
-(require 'init-yasnippet)
 
 
 (custom-set-variables
