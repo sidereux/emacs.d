@@ -24,6 +24,7 @@
 (require 'init-helm)
 (require 'init-ido)
 (require 'init-uniquify)
+(require 'init-markdown)
 
 
 (custom-set-variables
