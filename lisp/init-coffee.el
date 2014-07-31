@@ -19,12 +19,12 @@
     (if (coffee-line-wants-indent)
         (progn
           (coffee-insert-spaces coffee-tab-width)
-          (back-to-indentation)
+          (back-to-indentation)))
 
-          ;; We're too far, remove all indentation.
-          (when (> (- (current-indentation) prev-indent) coffee-tab-width)
-            (backward-to-indentation 0)
-            (delete-region (point-at-bol) (point)))))))
+    ;; We're too far, remove all indentation.
+    (when (> (- (current-indentation) prev-indent) coffee-tab-width)
+      (backward-to-indentation 0)
+      (delete-region (point-at-bol) (point)))))
 
 ;; The original coffee-indent-line function could not work well with
 ;; evil-mode.
