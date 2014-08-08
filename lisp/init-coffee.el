@@ -24,7 +24,9 @@
       ;; We're too far, remove all indentation.
       (when (> (- (current-indentation) prev-indent) coffee-tab-width)
         (backward-to-indentation 0)
-        (delete-region (point-at-bol) (point))))))
+        (delete-region (point-at-bol) (point)))))
+  (if (= (point) (line-beginning-position))
+      (back-to-indentation)))
 
 ;; The original coffee-indent-line function could not work well with
 ;; evil-mode.
@@ -35,5 +37,8 @@
   (set (make-local-variable 'indent-line-function) 'my:coffee-indent-line))
 
 (add-hook 'coffee-mode-hook 'my:coffee-mode-hook)
+
+;; enable auto complete
+(add-hook 'coffee-mode-hook 'auto-complete-mode)
 
 (provide 'init-coffee)
