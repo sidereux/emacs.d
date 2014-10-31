@@ -8,6 +8,9 @@
 ;; enable gtags-mode
 (add-hook 'c-mode-common-hook 'gtags-mode)
 
+;; make '_' as a word character
+(add-hook 'c-mode-common-hook (lambda () (modify-syntax-entry ?_ "w")))
+
 (require-package 'auto-complete-c-headers)
 
 (require 'auto-complete-c-headers)
@@ -19,6 +22,7 @@
 
 (add-hook 'c-mode-hook 'my:ac-c-header-init)
 (add-hook 'c++-mode-hook 'my:ac-c-header-init)
+
 
 
 (defun my:add-semantic-to-autocomplete ()
