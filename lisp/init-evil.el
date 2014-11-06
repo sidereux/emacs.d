@@ -1,8 +1,10 @@
 (require-package 'evil)
+(require-package 'evil-leader)
 (require-package 'evil-surround)
 
 (evil-mode 1)
 
+(global-evil-leader-mode 1)
 (global-evil-surround-mode 1)
 
 ;; evil-surround use 's' instead of 'S' for surroundings in visual mode.
