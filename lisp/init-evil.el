@@ -19,4 +19,14 @@
 (evil-define-key 'visual evil-surround-mode-map "S" 'evil-surround-region)
 
 
+(evil-leader/set-key "]" 'gtags-find-tag-from-here)
+(evil-leader/set-key "[" 'gtags-pop-stack)
+
+;; fix for conflicts with ecb
+(add-hook 'ecb-history-buffer-after-create-hook 'evil-emacs-state)
+(add-hook 'ecb-directories-buffer-after-create-hook 'evil-emacs-state)
+(add-hook 'ecb-methods-buffer-after-create-hook 'evil-emacs-state)
+(add-hook 'ecb-sources-buffer-after-create-hook 'evil-emacs-state)
+
+
 (provide 'init-evil)

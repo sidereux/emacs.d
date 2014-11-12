@@ -33,4 +33,8 @@
 ;; disable toolbar
 (tool-bar-mode -1)
 
+;; use shift+{left,up,down,right} to switch between windows
+(windmove-default-keybindings)
+(setq windmove-wrap-around t)
+
 (provide 'init-common)
