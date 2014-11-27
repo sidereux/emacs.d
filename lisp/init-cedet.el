@@ -1,19 +1,22 @@
-;; configuration for CEDET and ECB
+;; configuration for CEDET
+
 
 ;; Enable CEDET
 (require 'cedet)
 
 (setq semantic-default-submodes
-      (append '(global-semantic-highlight-func-mode
-                global-semantic-idle-local-symbol-highlight-mode)
+      (append '(global-semanticdb-minor-mode
+                global-semantic-idle-scheduler-mode
+                global-semantic-idle-local-symbol-highlight-mode
+                global-semantic-idle-completions-mode)
               semantic-default-submodes))
 
 (semantic-mode t)
 (require 'semantic/ia)
 (require 'semantic/bovine/gcc)
 
-;; Install and enable ECB
-(require-package 'ecb)
-(require 'ecb)
+;; enable support for gnu global
+(semanticdb-enable-gnu-global-databases 'c-mode)
+
 
 (provide 'init-cedet)
