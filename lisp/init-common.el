@@ -4,7 +4,7 @@
 
 ;; Scroll Smoothly
 (setq redisplay-dont-pause t)
-(setq scroll-margin 5)
+(setq scroll-margin 9)
 (setq scroll-conservatively 1000)
 ;;(setq scroll-up-aggressively 0.01
 ;;      scroll-down-aggressively 0.01)

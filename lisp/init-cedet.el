@@ -8,7 +8,7 @@
       (append '(global-semanticdb-minor-mode
                 global-semantic-idle-scheduler-mode
                 global-semantic-idle-local-symbol-highlight-mode
-                global-semantic-idle-completions-mode)
+                global-semantic-idle-summary-mode)
               semantic-default-submodes))
 
 (semantic-mode t)

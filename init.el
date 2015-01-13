@@ -5,7 +5,7 @@
 (require 'init-common)
 (require 'init-indent)
 
-; load init-elpa before init-auto-complete
+;; load init-elpa before init-auto-complete
 (require 'init-cedet)
 (require 'init-themes)
 (require 'init-gtags)
