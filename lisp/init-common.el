@@ -2,6 +2,13 @@
 (require 'saveplace)
 (setq-default save-place t)
 
+;; Use space instead of tab
+(setq-default indent-tabs-mode nil)
+
+;; Set indents to 4 spaces
+(setq-default tab-width 4)
+(customize-variable (quote tab-stop-list))
+
 ;; Scroll Smoothly
 (setq redisplay-dont-pause t)
 (setq scroll-margin 9)
@@ -36,5 +43,15 @@
 ;; use shift+{left,up,down,right} to switch between windows
 (windmove-default-keybindings)
 (setq windmove-wrap-around t)
+
+;; theme config
+;; (require-package 'color-theme-sanityinc-solarized)
+(require-package 'color-theme-sanityinc-tomorrow)
+;; (require-package 'zenburn-theme)
+;; (require 'color-theme-sanityinc-solarized)
+(require 'color-theme-sanityinc-tomorrow)
+
+(load-theme 'sanityinc-tomorrow-night t)
+
 
 (provide 'init-common)
