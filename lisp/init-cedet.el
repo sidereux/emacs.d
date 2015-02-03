@@ -1,5 +1,4 @@
-;; configuration for CEDET
-
+;;; init-cedet.el --- configuration for CEDET
 
 ;; Enable CEDET
 (require 'cedet)

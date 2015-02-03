@@ -11,19 +11,12 @@
 ;; make '_' as a word character
 (add-hook 'c-mode-common-hook (lambda () (modify-syntax-entry ?_ "w")))
 
-(require-package 'auto-complete-c-headers)
-
-(require 'auto-complete-c-headers)
-
-
-(defun my:ac-c-header-init ()
-  (require 'auto-complete-c-headers)
-  (add-to-list 'ac-sources 'ac-source-c-headers))
-
-(add-hook 'c-mode-hook 'my:ac-c-header-init)
-(add-hook 'c++-mode-hook 'my:ac-c-header-init)
-
-
+(require-package 'ac-c-headers)
+(require 'ac-c-headers)
+(add-hook 'c-mode-hook
+          (lambda ()
+            (add-to-list 'ac-sources 'ac-source-c-headers)
+            (add-to-list 'ac-sources 'ac-source-c-header-symbols t)))
 
 (defun my:add-semantic-to-autocomplete ()
   (add-to-list 'ac-sources 'ac-source-semantic))
