@@ -1,17 +1,17 @@
 ;;; init-plugin.el --- common plugins
 
-;;; theme config
+;;; Theme
 (require-package 'color-theme-sanityinc-tomorrow)
 (require 'color-theme-sanityinc-tomorrow)
 (load-theme 'sanityinc-tomorrow-night t)
 
 
-;;; install and enable anzu plugin
+;;; Anzu
 (require-package 'anzu)
 (global-anzu-mode +1)
 
 
-;;; company-mode
+;;; company-mode - Modular in-buffer completion framework
 (require-package 'company)
 (require-package 'company-c-headers)
 (require-package 'company-jedi)
@@ -34,25 +34,27 @@
               )))
 
 
-;;; install highlight-indentation plugin
+;;; Highlight Indentation
 (require-package 'highlight-indentation)
+(add-hook 'emacs-lisp-mode-hook 'highlight-indentation-mode)
 
 
-;;; config uniquify
+;;; Uniquify - Making buffer names unique
 (require 'uniquify)
 (setq uniquify-buffer-name-style 'post-forward)
 
 
-;;; install flycheck
+;;; Flycheck - Modern on the fly syntax checking
+;; Quick start : http://www.flycheck.org/manual/latest/Quickstart.html
 (require-package 'flycheck)
 
 
-;;; config gtags
+;;; Gtags
 (autoload 'gtags-mode "gtags" "" t)
 (setq gtags-auto-update t)
 
 
-;;; install autopair
+;;; Autopair
 (require-package 'autopair)
 (require 'autopair)
 
@@ -63,7 +65,7 @@
 (setq autopair-blink nil)
 
 
-;;; install helm
+;;; Helm - Emacs incremental completion and selection narrowing framework
 (require-package 'helm)
 (require-package 'helm-ls-git)
 
@@ -72,7 +74,7 @@
 (global-set-key (kbd "C-c h") 'helm-mini)
 
 
-;;; install smex
+;;; Smex
 (require-package 'smex)
 (require 'smex)
 (smex-initialize)
@@ -83,7 +85,7 @@
 (global-set-key (kbd "C-c C-c M-x") 'execute-extended-command)
 
 
-;;; install markdown
+;;; Markdown mode
 (require-package 'markdown-mode)
 
 (autoload 'markdown-mode "markdown-mode"

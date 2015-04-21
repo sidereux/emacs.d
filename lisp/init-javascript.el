@@ -13,6 +13,7 @@
 
 ;; set highlight indentation
 (add-hook 'js2-mode-hook 'highlight-indentation-mode)
+(add-hook 'js2-mode-hook 'flycheck-mode)
 
 
 (provide 'init-javascript)

@@ -38,7 +38,4 @@
 
 (add-hook 'coffee-mode-hook 'my:coffee-mode-hook)
 
-;; enable auto complete
-(add-hook 'coffee-mode-hook 'auto-complete-mode)
-
 (provide 'init-coffee)

@@ -2,9 +2,6 @@
 (setq c-default-style "linux"
       c-basic-offset 4)
 
-;; enable flycheck-mode for c-mode
-(add-hook 'c-mode-common-hook 'flycheck-mode)
-
 ;; enable gtags-mode
 (add-hook 'c-mode-common-hook 'gtags-mode)
 
@@ -14,7 +11,8 @@
                        (modify-syntax-entry ?_ "w" c-mode-syntax-table)
                        (modify-syntax-entry ?_ "w" c++-mode-syntax-table))))
 
-;; enable highlight indentation
+;; enable highlight indentation and flycheck
 (add-hook 'c-mode-common-hook 'highlight-indentation-mode)
+(add-hook 'c-mode-common-hook 'flycheck-mode)
 
 (provide 'init-c)
