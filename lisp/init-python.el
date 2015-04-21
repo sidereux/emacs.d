@@ -5,12 +5,10 @@
 ;; pip install pylint
 (add-hook 'python-mode-hook 'flycheck-mode)
 
-;; install jedi
-(require-package 'jedi)
+;; make '_' a word character
+(add-hook 'python-mode-hook
+          (lambda () (modify-syntax-entry ?_ "w" python-mode-syntax-table)))
 
-;; Install jedi server:
-;; M-x jedi:install-server
-(add-hook 'python-mode-hook 'jedi:setup)
-(setq jedi:complete-on-dot t)
+(add-hook 'python-mode-hook 'anaconda-mode)
 
 (provide 'init-python)

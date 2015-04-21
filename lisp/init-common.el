@@ -37,5 +37,8 @@
 (windmove-default-keybindings)
 (setq windmove-wrap-around t)
 
+;; make '_' a word character
+(add-hook 'sh-mode-hook
+          (lambda () (modify-syntax-entry ?_ "w" sh-mode-syntax-table)))
 
 (provide 'init-common)

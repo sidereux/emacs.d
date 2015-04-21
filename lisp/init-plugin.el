@@ -11,6 +11,29 @@
 (global-anzu-mode +1)
 
 
+;;; company-mode
+(require-package 'company)
+(require-package 'company-c-headers)
+(require-package 'company-jedi)
+(require-package 'company-anaconda)
+
+(add-hook 'after-init-hook 'global-company-mode)
+(add-hook 'global-company-mode-hook
+          (lambda ()
+            (progn
+              (add-to-list 'company-backends 'company-c-headers)
+              (add-to-list 'company-backends 'company-anaconda)
+              (setq company-clang-arguments
+                    '("-I/usr/include/"
+                      "-I/usr/local/include/"
+                      "-I/usr/include/x86_64-linux-gnu/"))
+              (setq company-c-headers-path-system
+                    '("/usr/include/"
+                      "/usr/local/include/"
+                      "/usr/include/x86_64-linux-gnu/"))
+              )))
+
+
 ;;; install highlight-indentation plugin
 (require-package 'highlight-indentation)
 
@@ -27,14 +50,6 @@
 ;;; config gtags
 (autoload 'gtags-mode "gtags" "" t)
 (setq gtags-auto-update t)
-
-
-;;; install auto-complete
-(require-package 'auto-complete)
-(require 'auto-complete-config)
-
-(global-auto-complete-mode t)
-(ac-config-default)
 
 
 ;;; install autopair

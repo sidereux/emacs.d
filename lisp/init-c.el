@@ -9,19 +9,10 @@
 (add-hook 'c-mode-common-hook 'gtags-mode)
 
 ;; make '_' as a word character
-(add-hook 'c-mode-common-hook (lambda () (modify-syntax-entry ?_ "w")))
-
-(require-package 'ac-c-headers)
-(require 'ac-c-headers)
-(add-hook 'c-mode-hook
-          (lambda ()
-            (add-to-list 'ac-sources 'ac-source-c-headers)
-            (add-to-list 'ac-sources 'ac-source-c-header-symbols t)))
-
-(defun my:add-semantic-to-autocomplete ()
-  (add-to-list 'ac-sources 'ac-source-semantic))
-
-(add-hook 'c-mode-common-hook 'my:add-semantic-to-autocomplete)
+(add-hook 'c-mode-common-hook 
+          (lambda () (progn
+                       (modify-syntax-entry ?_ "w" c-mode-syntax-table)
+                       (modify-syntax-entry ?_ "w" c++-mode-syntax-table))))
 
 ;; enable highlight indentation
 (add-hook 'c-mode-common-hook 'highlight-indentation-mode)
