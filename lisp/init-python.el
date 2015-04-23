@@ -8,4 +8,11 @@
 
 (add-hook 'python-mode-hook 'anaconda-mode)
 
+;; virtualenvwrapper
+(require-package 'virtualenvwrapper)
+(require 'virtualenvwrapper)
+(venv-initialize-interactive-shells)
+(venv-initialize-eshell)
+
+
 (provide 'init-python)
