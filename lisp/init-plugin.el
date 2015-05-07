@@ -11,18 +11,31 @@
 (global-anzu-mode +1)
 
 
+;;; golang support - required by company-go
+(require-package 'go-mode)
+(require-package 'go-eldoc)
+
+(require 'go-mode-autoloads)
+(require 'go-eldoc)
+
+
 ;;; company-mode - Modular in-buffer completion framework
 (require-package 'company)
 (require-package 'company-c-headers)
-(require-package 'company-jedi)
 (require-package 'company-anaconda)
+(require-package 'company-go)
+
+(require 'company-go)
 
 (add-hook 'after-init-hook 'global-company-mode)
 (add-hook 'global-company-mode-hook
           (lambda ()
+            ;; remove annoying blinking
+            (setq company-echo-delay 0)
             (progn
               (add-to-list 'company-backends 'company-c-headers)
               (add-to-list 'company-backends 'company-anaconda)
+              (add-to-list 'company-backends 'company-go)
               (setq company-clang-arguments
                     '("-I/usr/include/"
                       "-I/usr/local/include/"
