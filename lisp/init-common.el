@@ -31,7 +31,8 @@
 (setq-default case-fold-search nil)
 
 ;; disable toolbar
-(tool-bar-mode -1)
+(add-hook 'after-init-hook (lambda ()
+                             (tool-bar-mode nil)))
 
 ;; use shift+{left,up,down,right} to switch between windows
 (windmove-default-keybindings)
