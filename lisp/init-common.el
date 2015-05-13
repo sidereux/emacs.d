@@ -32,7 +32,7 @@
 
 ;; disable toolbar
 (add-hook 'after-init-hook (lambda ()
-                             (tool-bar-mode nil)))
+                             (tool-bar-mode 0)))
 
 ;; use shift+{left,up,down,right} to switch between windows
 (windmove-default-keybindings)
