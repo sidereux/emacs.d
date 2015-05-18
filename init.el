@@ -7,6 +7,7 @@
 ;; load init-elpa before init-auto-complete
 (require 'init-plugin)
 (require 'init-ido)
+(require 'init-helm)
 (require 'init-c)
 (require 'init-python)
 (require 'init-javascript)

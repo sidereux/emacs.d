@@ -24,21 +24,24 @@
 ;; Show Paren Mode
 (show-paren-mode t)
 
-;; hilight current line
+;; Hilight current line
 (global-hl-line-mode t)
 
 ;; Make the search case-sensitive
 (setq-default case-fold-search nil)
 
-;; disable toolbar
+;; Disable toolbar
 (add-hook 'after-init-hook (lambda ()
                              (tool-bar-mode 0)))
 
-;; use shift+{left,up,down,right} to switch between windows
+;; Make "M-x shell-command" read rc file
+(setq shell-command-switch "-ic")
+
+;; Use shift+{left,up,down,right} to switch between windows
 (windmove-default-keybindings)
 (setq windmove-wrap-around t)
 
-;; make '_' a word character
+;; Make '_' a word character
 (add-hook 'sh-mode-hook
           (lambda () (modify-syntax-entry ?_ "w" sh-mode-syntax-table)))
 

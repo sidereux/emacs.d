@@ -78,22 +78,14 @@
 (setq autopair-blink nil)
 
 
-;;; Helm - Emacs incremental completion and selection narrowing framework
-(require-package 'helm)
-(require-package 'helm-ls-git)
-
-(require 'helm-config)
-(require 'helm-ls-git)
-(global-set-key (kbd "C-c h") 'helm-mini)
-
-
-;;; Smex
+;;; Smex - M-x interface with Ido-style fuzzy matching.
 (require-package 'smex)
 (require 'smex)
 (smex-initialize)
 
 (global-set-key (kbd "M-x") 'smex)
-(global-set-key (kbd "M-X") 'smex-major-mode-commands)
+;; "M-X" will be bound to helm-M-x
+;; (global-set-key (kbd "M-X") 'smex-major-mode-commands)
 ;; old M-x
 (global-set-key (kbd "C-c C-c M-x") 'execute-extended-command)
 

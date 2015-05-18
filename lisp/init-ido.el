@@ -6,6 +6,7 @@
 (ido-everywhere t)
 
 (setq ido-enable-flex-matching t)
+;; Disable ido faces to see flx highlights
 (setq ido-use-faces nil)
 (setq ido-use-virtual-buffers t)
 
