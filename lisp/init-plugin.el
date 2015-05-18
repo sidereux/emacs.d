@@ -67,15 +67,6 @@
 (setq gtags-auto-update t)
 
 
-;;; Autopair
-(require-package 'autopair)
-(require 'autopair)
-
-(autopair-global-mode)
-(setq autopair-autowrap 1)
-
-;; stop blink, improve performance
-(setq autopair-blink nil)
 
 
 ;;; Smex - M-x interface with Ido-style fuzzy matching.

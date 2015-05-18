@@ -45,4 +45,7 @@
 (add-hook 'sh-mode-hook
           (lambda () (modify-syntax-entry ?_ "w" sh-mode-syntax-table)))
 
+;; Autopairing
+(electric-pair-mode t)
+
 (provide 'init-common)
