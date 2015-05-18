@@ -73,6 +73,8 @@
 ;;
 ;; Original "C-x C-b" is "list-buffers"
 (global-set-key (kbd "C-x C-b") 'helm-mini)
+;; Original "C-c h b" is "helm-resume"
+(global-set-key (kbd "C-c h b") 'helm-mini)
 (setq helm-buffers-fuzzy-matching t)
 (setq helm-recentf-fuzzy-match t)
 
@@ -85,11 +87,6 @@
 ;;
 ;; Original "C-c h f" is "helm-multi-files"
 (global-set-key (kbd "C-c h f") 'helm-find-files)
-
-
-
-
-(helm-mode t)
 
 
 
