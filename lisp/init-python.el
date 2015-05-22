@@ -9,6 +9,10 @@
 (add-hook 'python-mode-hook 'anaconda-mode)
 (add-hook 'python-mode-hook 'eldoc-mode)
 
+;; pyenv
+(require-package 'pyenv-mode)
+(pyenv-mode)
+
 ;; virtualenvwrapper
 (require-package 'virtualenvwrapper)
 (require 'virtualenvwrapper)
