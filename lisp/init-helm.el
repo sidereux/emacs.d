@@ -44,6 +44,7 @@
 
 ;;; helm-ag
 (setq helm-ag-use-grep-ignore-list t)
+(global-set-key (kbd "C-c h g") 'helm-ag)
 
 
 ;;; Other useful commands
