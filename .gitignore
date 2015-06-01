@@ -4,6 +4,7 @@
 .python-environments
 ac-comphist.dat
 auto-save-list
+custom.el
 ede-projects.el
 elpa
 ido.last

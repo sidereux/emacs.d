@@ -27,6 +27,18 @@
 
 (require 'company-go)
 
+(setq company-c-headers-path-system
+      '("/usr/include/"
+        "/usr/local/include/"
+        "/usr/include/x86_64-linux-gnu/"))
+
+(setq company-clang-arguments
+      '("-I/usr/include/"
+        "-I/usr/local/include/"
+        "-I/usr/include/x86_64-linux-gnu/"))
+
+(global-set-key (kbd "C-c f") 'company-files)
+
 (add-hook 'after-init-hook 'global-company-mode)
 (add-hook 'global-company-mode-hook
           (lambda ()
@@ -36,14 +48,6 @@
               (add-to-list 'company-backends 'company-c-headers)
               (add-to-list 'company-backends 'company-anaconda)
               (add-to-list 'company-backends 'company-go)
-              (setq company-clang-arguments
-                    '("-I/usr/include/"
-                      "-I/usr/local/include/"
-                      "-I/usr/include/x86_64-linux-gnu/"))
-              (setq company-c-headers-path-system
-                    '("/usr/include/"
-                      "/usr/local/include/"
-                      "/usr/include/x86_64-linux-gnu/"))
               )))
 
 
