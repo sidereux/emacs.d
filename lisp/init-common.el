@@ -48,4 +48,16 @@
 ;; Autopairing
 (electric-pair-mode t)
 
+;; Show warn message after press C-x C-c
+(defun my:exit-emacs ()
+  "Show warn message before exit emacs"
+  (interactive)
+  ;; (message "Exit emacs? (y)")
+  (if (string= "y" (read-key-sequence "Exit emacs? (y)"))
+      (save-buffers-kill-emacs)
+    (message "Press y to exit emacs.")))
+
+;; (global-unset-key (kbd "C-x C-c"))
+(global-set-key (kbd "C-x C-c") 'my:exit-emacs)
+
 (provide 'init-common)
