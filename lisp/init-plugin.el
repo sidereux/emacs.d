@@ -94,5 +94,10 @@
 (add-to-list 'auto-mode-alist '("\\.markdown\\'" . markdown-mode))
 (add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode))
 
+;;; adoc-mode
+(require-package 'adoc-mode)
+(require 'adoc-mode)
+(add-to-list 'auto-mode-alist (cons "\\.adoc\\'" 'adoc-mode))
+(add-hook 'adoc-mode-hook (lambda() (buffer-face-mode t)))
 
 (provide 'init-plugin)
