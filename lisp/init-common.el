@@ -62,9 +62,9 @@
 
 
 ;; bind isearch-forward-regexp to "C-s"
-(global-set-key (kbd "C-s") 'isearch-forward-regexp)
-
-;; bind isearch-forward-regexp to "C-s"
-(global-set-key (kbd "C-S") 'isearch-backward-regexp)
+;; bind isearch-backward-regexp to "C-S-s"
+(define-key global-map (kbd "C-s") 'isearch-forward-regexp)
+(define-key global-map (kbd "C-S-s") 'isearch-backward-regexp)
+(define-key isearch-mode-map (kbd "C-S-s") 'isearch-repeat-backward)
 
 (provide 'init-common)
