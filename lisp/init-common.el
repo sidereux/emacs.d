@@ -60,4 +60,11 @@
 ;; (global-unset-key (kbd "C-x C-c"))
 (global-set-key (kbd "C-x C-c") 'my:exit-emacs)
 
+
+;; bind isearch-forward-regexp to "C-s"
+(global-set-key (kbd "C-s") 'isearch-forward-regexp)
+
+;; bind isearch-forward-regexp to "C-s"
+(global-set-key (kbd "C-S") 'isearch-backward-regexp)
+
 (provide 'init-common)

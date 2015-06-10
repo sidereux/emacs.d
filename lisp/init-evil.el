@@ -58,8 +58,8 @@
 ;; (define-key evil-normal-state-map "S" 'evil-change-whole-line)
 ;;
 ;; fix:
-(evil-define-key 'visual evil-surround-mode-map "s" nil)
-(evil-define-key 'visual evil-surround-mode-map "S" 'evil-surround-region)
+;; (evil-define-key 'visual evil-surround-mode-map "s" nil)
+;; (evil-define-key 'visual evil-surround-mode-map "S" 'evil-surround-region)
 
 
 (evil-leader/set-key "]" 'gtags-find-tag-from-here)
