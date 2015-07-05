@@ -68,7 +68,7 @@
 
 ;;; Gtags
 (autoload 'gtags-mode "gtags" "" t)
-(setq gtags-auto-update t)
+;; (setq gtags-auto-update t)
 
 
 
