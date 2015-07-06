@@ -70,6 +70,16 @@
 (autoload 'gtags-mode "gtags" "" t)
 ;; (setq gtags-auto-update t)
 
+(defun gtags-update ()
+  "Update gtags"
+  (interactive)
+  (if (and gtags-mode buffer-file-name)
+      (progn
+        (gtags-push-tramp-environment)
+        ;; (call-process gtags-global-command nil nil nil "-u" (concat "--single-update=" buffer-file-name))
+        (call-process gtags-global-command nil nil nil "-u")
+        (gtags-pop-tramp-environment))))
+
 
 
 
