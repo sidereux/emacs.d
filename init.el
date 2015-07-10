@@ -15,6 +15,6 @@
 (require 'init-evil)
 
 ;; load custom.el if exist
-(setq my:custom-file (expand-file-name "custom.el" user-emacs-directory))
-(when (file-exists-p my:custom-file)
-  (load my:custom-file))
+(setq custom-file (expand-file-name "custom.el" user-emacs-directory))
+(when (file-exists-p custom-file)
+  (load custom-file))
