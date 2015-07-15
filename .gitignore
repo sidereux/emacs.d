@@ -7,6 +7,7 @@ auto-save-list
 custom.el
 ede-projects.el
 elpa
+eshell
 ido.last
 places
 recentf

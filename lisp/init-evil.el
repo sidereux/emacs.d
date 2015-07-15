@@ -62,8 +62,11 @@
 ;; (evil-define-key 'visual evil-surround-mode-map "S" 'evil-surround-region)
 
 
-(evil-leader/set-key "]" 'gtags-find-tag-from-here)
-(evil-leader/set-key "[" 'gtags-pop-stack)
+(evil-leader/set-key "]" 'helm-gtags-find-tag-from-here)
+(evil-leader/set-key "[" 'helm-gtags-pop-stack)
+(evil-leader/set-key "gt" 'helm-gtags-find-tag)
+(evil-leader/set-key "gr" 'helm-gtags-find-rtag)
+(evil-leader/set-key "gp" 'helm-gtags-pop-stack)
 
 
 (provide 'init-evil)
