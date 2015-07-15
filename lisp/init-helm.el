@@ -5,6 +5,7 @@
 (require-package 'helm)
 (require-package 'helm-ag)
 (require-package 'helm-ls-git)
+(require-package 'helm-gtags)
 
 
 (require 'helm)
