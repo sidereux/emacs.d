@@ -2,9 +2,6 @@
 (setq c-default-style "linux"
       c-basic-offset 4)
 
-;; enable gtags-mode
-(add-hook 'c-mode-common-hook 'gtags-mode)
-
 ;; make '_' as a word character
 (add-hook 'c-mode-common-hook 
           (lambda () (progn

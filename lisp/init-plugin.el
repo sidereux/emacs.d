@@ -102,4 +102,8 @@
 ;;; cmake-mode
 (require-package 'cmake-mode)
 
+;;; rainbow-delimiters
+(require-package 'rainbow-delimiters)
+(add-hook 'emacs-lisp-mode-hook 'rainbow-delimiters-mode)
+
 (provide 'init-plugin)
