@@ -66,18 +66,6 @@
 (require-package 'flycheck)
 
 
-;;; Smex - M-x interface with Ido-style fuzzy matching.
-(require-package 'smex)
-(require 'smex)
-(smex-initialize)
-
-(global-set-key (kbd "M-x") 'smex)
-;; "M-X" will be bound to helm-M-x
-;; (global-set-key (kbd "M-X") 'smex-major-mode-commands)
-;; old M-x
-(global-set-key (kbd "C-c C-c M-x") 'execute-extended-command)
-
-
 ;;; Markdown mode
 (require-package 'markdown-mode)
 

@@ -1,22 +1,28 @@
 (require-package 'flx-ido)
 (require-package 'ido-ubiquitous)
 (require-package 'idomenu)
+(require-package 'smex)
 
+(require 'smex)
+(smex-initialize)
+
+(require 'flx-ido)
 (ido-mode t)
 (ido-everywhere t)
+(flx-ido-mode t)
+
+(require 'ido-ubiquitous)
+(ido-ubiquitous-mode t)
 
 (setq ido-enable-flex-matching t)
+
 ;; Disable ido faces to see flx highlights
 (setq ido-use-faces nil)
 (setq ido-use-virtual-buffers t)
-
 (setq ido-auto-merge-delay-time 2)
 
 
-(require 'flx-ido)
-
-(flx-ido-mode t)
-(ido-ubiquitous-mode t)
+(global-set-key (kbd "M-x") 'smex)
 
 
 (provide 'init-ido)
