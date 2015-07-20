@@ -67,4 +67,9 @@
 (define-key global-map (kbd "C-S-s") 'isearch-backward-regexp)
 (define-key isearch-mode-map (kbd "C-S-s") 'isearch-repeat-backward)
 
+;; org-mode
+;; open url with "xdg-open"
+(setq browse-url-browser-function 'browse-url-generic
+      browse-url-generic-program "xdg-open")
+
 (provide 'init-common)
