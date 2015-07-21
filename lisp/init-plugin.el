@@ -97,11 +97,11 @@
 ;;; ace-jump-mode
 (require-package 'ace-jump-mode)
 (autoload 'ace-jump-mode "ace-jump-mode" "Emacs quick move minor mode" t)
-(define-key global-map (kbd "C-c C-j") 'ace-jump-mode)
+;; (define-key global-map (kbd "C-c j") 'ace-jump-mode)
 
-(autoload 'ace-jump-mode-pop-mark "ace-jump-mode" "Ace jump back:-)" t)
-(eval-after-load "ace-jump-mode" '(ace-jump-mode-enable-mark-sync))
-(define-key global-map (kbd "C-x C-j") 'ace-jump-mode-pop-mark)
+;; (autoload 'ace-jump-mode-pop-mark "ace-jump-mode" "Ace jump back:-)" t)
+;; (eval-after-load "ace-jump-mode" '(ace-jump-mode-enable-mark-sync))
+;; (define-key global-map (kbd "C-c p") 'ace-jump-mode-pop-mark)
 
 ;;; window-numbering
 (require-package 'window-numbering)

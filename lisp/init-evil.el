@@ -65,11 +65,16 @@
 ;; (evil-define-key 'visual evil-surround-mode-map "S" 'evil-surround-region)
 
 
+;; key maps for helm-gtags
 (evil-leader/set-key "]" 'helm-gtags-find-tag-from-here)
 (evil-leader/set-key "[" 'helm-gtags-pop-stack)
+(evil-leader/set-key "gu" 'helm-gtags-update-tags)
 (evil-leader/set-key "gt" 'helm-gtags-find-tag)
 (evil-leader/set-key "gr" 'helm-gtags-find-rtag)
 (evil-leader/set-key "gp" 'helm-gtags-pop-stack)
+
+;; key maps for ace-jump
+(evil-leader/set-key "j" 'ace-jump-mode)
 
 
 (provide 'init-evil)

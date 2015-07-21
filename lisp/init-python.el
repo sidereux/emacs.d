@@ -1,3 +1,6 @@
+;; pyenv
+(require-package 'pyenv-mode)
+
 ;; enable highlight indentation and flycheck
 (add-hook 'python-mode-hook 'highlight-indentation-mode)
 (add-hook 'python-mode-hook 'flycheck-mode)
@@ -8,10 +11,6 @@
 
 (add-hook 'python-mode-hook 'anaconda-mode)
 (add-hook 'python-mode-hook 'eldoc-mode)
-
-;; pyenv
-(require-package 'pyenv-mode)
-(pyenv-mode)
 
 ;; virtualenvwrapper
 (require-package 'virtualenvwrapper)
