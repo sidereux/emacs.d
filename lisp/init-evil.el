@@ -1,12 +1,10 @@
 (require-package 'evil)
 (require-package 'evil-leader)
-(require-package 'evil-matchit)
 (require-package 'evil-surround)
 (require-package 'evil-search-highlight-persist)
 
 (require 'evil)
 (require 'evil-leader)
-(require 'evil-matchit)
 (require 'evil-surround)
 (require 'highlight)
 ;; highlight search keyword like vim
@@ -15,7 +13,6 @@
 
 (evil-mode 1)
 (global-evil-leader-mode)
-(global-evil-matchit-mode t)
 (global-evil-surround-mode t)
 (global-evil-search-highlight-persist t)
 
