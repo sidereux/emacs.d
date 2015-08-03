@@ -107,4 +107,7 @@
 (require-package 'window-numbering)
 (window-numbering-mode t)
 
+;;; magit
+(require-package 'magit)
+
 (provide 'init-plugin)
