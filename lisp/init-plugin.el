@@ -110,4 +110,17 @@
 ;;; magit
 (require-package 'magit)
 
+;;; bison-mode
+(require-package 'bison-mode)
+
+;;; yasnippet
+(require-package 'yasnippet)
+(require 'yasnippet)
+(yas-global-mode 1)
+
+;;; expand-region
+(require-package 'expand-region)
+(require 'expand-region)
+(global-set-key (kbd "C-=") 'er/expand-region)
+
 (provide 'init-plugin)
