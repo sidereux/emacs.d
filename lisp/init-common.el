@@ -18,6 +18,9 @@
 ;; Change the size of a font for the current frame
 (set-face-attribute 'default (selected-frame) :height 150)
 
+;; Display column number
+(column-number-mode t)
+
 ;; Line number
 (global-linum-mode t)
 
