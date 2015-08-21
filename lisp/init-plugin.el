@@ -113,6 +113,9 @@
 ;;; bison-mode
 (require-package 'bison-mode)
 
+;;; lemon-mode
+(require-package 'lemon-mode)
+
 ;;; yasnippet
 (require-package 'yasnippet)
 (require 'yasnippet)
