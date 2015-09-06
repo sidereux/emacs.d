@@ -73,4 +73,26 @@
 (setq browse-url-browser-function 'browse-url-generic
       browse-url-generic-program "xdg-open")
 
+;; highlight search keyword
+(defun my:highlight-keyword (&rest args)
+  "highlight search keyword"
+  (interactive)
+  (message "my:highlight-keyword called")
+  (hlt-unhighlight-region-in-buffers (list (current-buffer)))
+  (let ((hlt-use-overlays-flag t)
+        (hlt-last-face 'isearch))
+    (setq my:highlight-keyword-str nil)
+    (setq my:highlight-keyword-len 3)
+    (if isearch-regexp
+        (setq my:highlight-keyword-str (car-safe regexp-search-ring))
+      (setq my:highlight-keyword-str (car-safe search-ring)))
+    (if (>= (length my:highlight-keyword-str) my:highlight-keyword-len)
+        (hlt-highlight-regexp-region-in-buffers
+         my:highlight-keyword-str
+         (list (current-buffer))))))
+
+(advice-add 'isearch-exit :after 'my:highlight-keyword)
+(advice-add 'evil-flash-search-pattern :after 'my:highlight-keyword)
+
+
 (provide 'init-common)

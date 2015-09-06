@@ -1,20 +1,14 @@
 (require-package 'evil)
 (require-package 'evil-leader)
 (require-package 'evil-surround)
-(require-package 'evil-search-highlight-persist)
 
 (require 'evil)
 (require 'evil-leader)
 (require 'evil-surround)
-(require 'highlight)
-;; highlight search keyword like vim
-(require 'evil-search-highlight-persist)
-
 
 (evil-mode 1)
 (global-evil-leader-mode)
 (global-evil-surround-mode t)
-(global-evil-search-highlight-persist t)
 
 
 ;; remap :q[uit] to evil-kill-current-buffer
