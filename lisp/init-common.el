@@ -21,9 +21,6 @@
 ;; Display column number
 (column-number-mode t)
 
-;; Line number
-(global-linum-mode t)
-
 ;; Show Paren Mode
 (show-paren-mode t)
 
