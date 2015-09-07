@@ -110,9 +110,6 @@
 ;;; magit
 (require-package 'magit)
 
-;;; bison-mode
-(require-package 'bison-mode)
-
 ;;; lemon-mode
 (require-package 'lemon-mode)
 

@@ -77,7 +77,6 @@
 (defun my:highlight-keyword (&rest args)
   "highlight search keyword"
   (interactive)
-  (message "my:highlight-keyword called")
   (hlt-unhighlight-region-in-buffers (list (current-buffer)))
   (let ((hlt-use-overlays-flag t)
         (hlt-last-face 'isearch))
