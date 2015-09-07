@@ -93,5 +93,7 @@
 (advice-add 'isearch-exit :after 'my:highlight-keyword)
 (advice-add 'evil-flash-search-pattern :after 'my:highlight-keyword)
 
+;; bison mode
+(require 'bison-mode)
 
 (provide 'init-common)
