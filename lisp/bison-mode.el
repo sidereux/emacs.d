@@ -7,9 +7,11 @@
 ;; http://www.gnu.org/software/bison/manual/html_node/Table-of-Symbols.html
 
 (defvar bison-symbol-directive-regexp "%\\(\\w\\|-\\)+")
+(defvar bison-symbol-rule-regexp "\\(\\w+\\)\\s-*:")
 
 (defvar bison-font-lock-keywords
   `((,bison-symbol-directive-regexp . font-lock-function-name-face)
+    (,bison-symbol-rule-regexp . (1 font-lock-variable-name-face))
     ))
 
 ;; TODO support C++
