@@ -6,23 +6,55 @@
 ;; Symbols
 ;; http://www.gnu.org/software/bison/manual/html_node/Table-of-Symbols.html
 
-(defvar bison-symbol-directive-regexp "%\\(\\w\\|-\\)+")
-(defvar bison-symbol-rule-regexp "\\(\\w+\\)\\s-*:")
+(defvar bison-symbol-directive
+  '("%?" "%code" "%debug" "%define" "%defines" "%destructor" "%dprec" "%empty"
+    "%error-verbose" "%file-prefix" "%glr-parser" "%initial-action" "%language"
+    "%left" "%lex-param" "%merge" "%name-prefix" "%no-lines" "%nonassoc"
+    "%output" "%param" "%parse-param" "%prec" "%precedence" "%pure-parser"
+    "%require" "%right" "%skeleton" "%start" "%token" "%token-table" "%type"
+    "%union")
+  "Bison directive keywords")
+
+(defvar bison-symbol-variable-1-regexp
+  "\\([@$][0-9$]\\)")
+(defvar bison-symbol-variable-2-regexp
+  "\\([@$]\\w\\([0-9]\\|\\w\\)*\\)")
+(defvar bison-symbol-variable-3-regexp
+  "\\([@$]\\[[:alpha:]\\([0-9]\\|\\w\\|\\.\\|-\\)*\\]\\)")
+
+
+(defvar bison-symbol-directive-regexp
+  (regexp-opt bison-symbol-directive 'word))
+
+(defvar bison-symbol-rule-regexp
+  "\\([_[:alpha:]][-_[:alpha:][:alnum:]]*\\)\\(\\[.*?\\]\\|\\s-\\)*:")
 
 (defvar bison-font-lock-keywords
   `((,bison-symbol-directive-regexp . font-lock-function-name-face)
-    (,bison-symbol-rule-regexp . (1 font-lock-variable-name-face))
+    (,bison-symbol-variable-1-regexp . font-lock-variable-name-face)
+    (,bison-symbol-variable-2-regexp . font-lock-variable-name-face)
+    (,bison-symbol-variable-3-regexp . font-lock-variable-name-face)
+    (,bison-symbol-rule-regexp (1 font-lock-variable-name-face))
     ))
 
-;; TODO support C++
-(define-derived-mode bison-mode c-mode "bison"
-  "Major mode for editing bison rule files"
-  ;; (font-lock-add-keywords nil bison-font-lock-keywords)
-  (font-lock-add-keywords nil bison-font-lock-keywords)
-  )
+(defmacro bison-mode-define-derived-mode (base-mode base-mode-name)
+  "Define derived bison-mode from base-mode"
+  (let ((derived-mode
+         (intern (concat "bison-" (symbol-name base-mode))))
+        (derived-mode-name
+         (concat "Bison/" base-mode-name)))
+    `(define-derived-mode ,derived-mode ,base-mode ,derived-mode-name
+       "Major mode for editing bison grammar files"
+       (font-lock-add-keywords nil bison-font-lock-keywords)
+       )))
 
+(bison-mode-define-derived-mode c-mode "C")
+(bison-mode-define-derived-mode c++-mode "C++")
 
-(add-to-list 'auto-mode-alist '("\\.y\\'" . bison-mode))
-(add-to-list 'auto-mode-alist '("\\.yy\\'" . bison-mode))
+(defalias 'bison-mode 'bison-c-mode)
+
+(add-to-list 'auto-mode-alist '("\\.y\\'" . bison-c-mode))
+(add-to-list 'auto-mode-alist '("\\.yy\\'" . bison-c++-mode))
+
 
 (provide 'bison-mode)
