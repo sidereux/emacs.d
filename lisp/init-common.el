@@ -74,21 +74,29 @@
       browse-url-generic-program "xdg-open")
 
 ;; highlight search keyword
+(defvar my:highlight-keyword-len 3
+  "Minimum length of keyword to be highlighted.")
+(defvar my:highlight-keyword-str nil
+  "Keyword to be highlighted.")
+(defvar my:highlight-keyword-prev-str nil
+  "Previous highlighted keyword.")
+
 (defun my:highlight-keyword (&rest args)
-  "highlight search keyword"
+  "Highlight search keyword."
   (interactive)
-  (hlt-unhighlight-region-in-buffers (list (current-buffer)))
-  (let ((hlt-use-overlays-flag t)
-        (hlt-last-face 'isearch))
-    (setq my:highlight-keyword-str nil)
-    (setq my:highlight-keyword-len 3)
-    (if isearch-regexp
-        (setq my:highlight-keyword-str (car-safe regexp-search-ring))
-      (setq my:highlight-keyword-str (car-safe search-ring)))
-    (if (>= (length my:highlight-keyword-str) my:highlight-keyword-len)
-        (hlt-highlight-regexp-region-in-buffers
-         my:highlight-keyword-str
-         (list (current-buffer))))))
+  (if isearch-regexp
+      (setq my:highlight-keyword-str (car-safe regexp-search-ring))
+    (setq my:highlight-keyword-str (car-safe search-ring)))
+  (when (and (>= (length my:highlight-keyword-str) my:highlight-keyword-len)
+             (not (string-equal my:highlight-keyword-str
+                                my:highlight-keyword-prev-str)))
+    (let ((hlt-use-overlays-flag t)
+          (hlt-last-face 'isearch))
+      (hlt-unhighlight-region-in-buffers (list (current-buffer)))
+      (setq my:highlight-keyword-prev-str my:highlight-keyword-str)
+      (hlt-highlight-regexp-region-in-buffers
+       my:highlight-keyword-str
+       (list (current-buffer))))))
 
 (advice-add 'isearch-exit :after 'my:highlight-keyword)
 (advice-add 'evil-flash-search-pattern :after 'my:highlight-keyword)
