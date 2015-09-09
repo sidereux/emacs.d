@@ -104,4 +104,7 @@
 ;; bison mode
 (require 'bison-mode)
 
+;; flex mode
+(require 'flex-mode)
+
 (provide 'init-common)
