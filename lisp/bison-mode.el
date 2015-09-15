@@ -3,7 +3,9 @@
 (require 'font-lock)
 (require 'cc-mode)
 
-;; Symbols
+;; Syntax Highlight
+;;
+;; Bison Symbols:
 ;; http://www.gnu.org/software/bison/manual/html_node/Table-of-Symbols.html
 
 (defvar bison-symbol-directive
@@ -37,6 +39,70 @@
     (,bison-symbol-rule-regexp (1 font-lock-variable-name-face))
     ))
 
+;; Indentation
+;; TODO 看看indent.el里的indent-relative函数
+(defun bison-get-point-attribution (point)
+  "Check and set attribution of given point."
+  (let ((point-attr (syntax-ppss point)))
+    (setq bison-point-depth-in-parens (nth 0 point-attr))
+    (setq bison-point-paren-address (nth 1 point-attr))
+    (setq bison-point-expression-address (nth 2 point-attr))
+    (setq bison-point-inside-string (nth 3 point-attr))
+    (setq bison-point-inside-comment (nth 4 point-attr))
+    (setq bison-point-min-depth-in-parens (nth 6 point-attr))
+    (setq bison-point-comment-address (nth 8 point-attr))))
+
+(defun bison-inside-block (point)
+  "Return t if position of point inside of '{' and '}'."
+  (save-excursion
+    (goto-char point)
+    (bison-get-point-attribution point)
+    (if (> bison-point-depth-in-parens 0)
+        t
+      nil)))
+
+(defun bison-get-previous-non-empty-line-info ()
+  "Get informations about previous non-empty line"
+  (save-excursion
+    ;; get previous line indention
+    (catch 'line-num
+      (if (re-search-backward "^[^\n]" nil t)
+      (progn
+        (setq bison-previous-indentation (current-indentation))
+        (setq bison-previout-non-empty-line-number (line-number-at-pos))
+        (throw 'line-num nil))))))
+
+(defun bison-indent-line-function ()
+  "Indent the current line according to the syntactic context."
+  (save-excursion
+    (beginning-of-line)
+    (cond ((looking-at "^\\s-*|")
+           (indent-line-to default-tab-width))
+          ((looking-at "^\\s-*;")
+           (message "indent to 0")
+           (indent-line-to 0))
+          (t
+           (message "indent to previous")
+           (bison-get-previous-non-empty-line-info)
+           (indent-line-to bison-previous-indentation))
+          ))
+  (if (< (point) (+ (line-beginning-position) (current-indentation)))
+      (back-to-indentation)))
+
+(defun bison-indent-line ()
+  "Indent current line."
+  (interactive)
+  (cond
+   ((bison-inside-block (point))
+    (message "call c indent function")
+    (c-indent-line))
+   (t
+    (bison-indent-line-function))))
+
+;; TODO 输入分号时会卡
+;; TODO 看看syntax-table有没有问题
+;; TODO 看看c-electric-semi&comma命令，输入分号和逗号会自动调用这个命令
+
 (defmacro bison-mode-define-derived-mode (base-mode base-mode-name)
   "Define derived bison-mode from base-mode"
   (let ((derived-mode
@@ -46,6 +112,8 @@
     `(define-derived-mode ,derived-mode ,base-mode ,derived-mode-name
        "Major mode for editing bison grammar files"
        (font-lock-add-keywords nil bison-font-lock-keywords)
+       (setq-local indent-line-function 'bison-indent-line)
+       (setq-local indent-region-function nil)
        )))
 
 (bison-mode-define-derived-mode c-mode "C")
