@@ -40,7 +40,6 @@
     ))
 
 ;; Indentation
-;; TODO 看看indent.el里的indent-relative函数
 (defun bison-get-point-attribution (point)
   "Check and set attribution of given point."
   (let ((point-attr (syntax-ppss point)))
@@ -67,10 +66,13 @@
     ;; get previous line indention
     (catch 'line-num
       (if (re-search-backward "^[^\n]" nil t)
-      (progn
-        (setq bison-previous-indentation (current-indentation))
-        (setq bison-previout-non-empty-line-number (line-number-at-pos))
-        (throw 'line-num nil))))))
+          (progn
+            (beginning-of-line)
+            (if (or (looking-at "^.*:$")
+                    (looking-at "^\\s-*|"))
+                (setq bison-previous-indentation 6)
+              (setq bison-previous-indentation (current-indentation)))
+            (throw 'line-num nil))))))
 
 (defun bison-indent-line-function ()
   "Indent the current line according to the syntactic context."
@@ -79,6 +81,9 @@
     (cond ((looking-at "^\\s-*|")
            (indent-line-to default-tab-width))
           ((looking-at "^\\s-*;")
+           (message "indent to 0")
+           (indent-line-to 0))
+          ((looking-at ".*:$")
            (message "indent to 0")
            (indent-line-to 0))
           (t
@@ -98,10 +103,6 @@
     (c-indent-line))
    (t
     (bison-indent-line-function))))
-
-;; TODO 输入分号时会卡
-;; TODO 看看syntax-table有没有问题
-;; TODO 看看c-electric-semi&comma命令，输入分号和逗号会自动调用这个命令
 
 (defmacro bison-mode-define-derived-mode (base-mode base-mode-name)
   "Define derived bison-mode from base-mode"
