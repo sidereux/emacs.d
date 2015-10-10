@@ -107,4 +107,7 @@
 ;; flex mode
 (require 'flex-mode)
 
+;; which function mode
+(which-function-mode 1)
+
 (provide 'init-common)
