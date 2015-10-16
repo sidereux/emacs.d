@@ -108,6 +108,9 @@
 (require 'flex-mode)
 
 ;; which function mode
-(which-function-mode 1)
+(which-function-mode t)
+;; (eval-after-load "which-function"
+;;   '(setq which-func-modes '(c-mode c++-mode python-mode)))
+(setq which-func-modes '(c-mode c++-mode python-mode))
 
 (provide 'init-common)
