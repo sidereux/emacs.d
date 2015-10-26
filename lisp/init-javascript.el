@@ -14,6 +14,7 @@
 ;; set highlight indentation
 (add-hook 'js2-mode-hook 'highlight-indentation-mode)
 (add-hook 'js2-mode-hook 'flycheck-mode)
+(add-hook 'js2-mode-hook 'yas-minor-mode)
 
 
 (provide 'init-javascript)

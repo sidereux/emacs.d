@@ -118,7 +118,9 @@
 (require 'yasnippet)
 (setq yas-snippet-dirs
       (list (expand-file-name "snippets" user-emacs-directory)))
-(yas-global-mode 1)
+(add-hook 'emacs-lisp-mode-hook 'yas-minor-mode)
+(add-hook 'org-mode-hook 'yas-minor-mode)
+
 
 ;;; expand-region
 (require-package 'expand-region)
