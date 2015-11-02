@@ -74,6 +74,7 @@
       browse-url-generic-program "xdg-open")
 
 ;; highlight search keyword
+(require-package 'highlight)
 (defvar my:highlight-keyword-len 3
   "Minimum length of keyword to be highlighted.")
 (defvar my:highlight-keyword-str nil
