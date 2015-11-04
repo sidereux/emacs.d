@@ -40,6 +40,33 @@
     ))
 
 ;; Indentation
+
+(defun bison-inside-declaration (point)
+  "Return t if position inside declaration part
+of the bison grammar file.
+
+See http://www.gnu.org/software/bison/manual/html_node/Grammar-Layout.html"
+  ;; just search backword for %%
+  ;; if no %% exist, then return t
+  (save-excursion
+    (if (re-search-backward "^%%$" nil t)
+        nil
+      t)))
+
+(defun bison-inside-rule (point)
+  "Return t if position inside rule part
+of the bison grammar file
+
+See http://www.gnu.org/software/bison/manual/html_node/Grammar-Layout.html"
+  ;; search backward for %%
+  ;; if only one %% exist, the return t
+  (save-excursion
+    (if (re-search-backward "^%%$" nil t)
+        (if (re-search-backward "^%%$" nil t)
+            nil
+          t)
+      nil)))
+
 (defun bison-get-point-attribution (point)
   "Check and set attribution of given point."
   (let ((point-attr (syntax-ppss point)))
@@ -74,8 +101,8 @@
               (setq bison-previous-indentation (current-indentation)))
             (throw 'line-num nil))))))
 
-(defun bison-indent-line-function ()
-  "Indent the current line according to the syntactic context."
+(defun bison-indent-rule-function ()
+  "Indent line in rule part according to the syntactic context."
   (save-excursion
     (beginning-of-line)
     (cond ((looking-at "^\\s-*|")
@@ -94,15 +121,23 @@
   (if (< (point) (+ (line-beginning-position) (current-indentation)))
       (back-to-indentation)))
 
+(defun bison-indent-declaration-function ()
+  "Indent line in declaration part"
+  (save-excursion
+    ;; TODO fix indentation in %{ .. }%
+    (c-indent-line)))
+
 (defun bison-indent-line ()
   "Indent current line."
   (interactive)
   (cond
+   ((bison-inside-declaration (point))
+    (bison-indent-declaration-function))
    ((bison-inside-block (point))
     (message "call c indent function")
     (c-indent-line))
-   (t
-    (bison-indent-line-function))))
+   ((bison-inside-rule (point))
+    (bison-indent-rule-function))))
 
 (defmacro bison-mode-define-derived-mode (base-mode base-mode-name)
   "Define derived bison-mode from base-mode"
