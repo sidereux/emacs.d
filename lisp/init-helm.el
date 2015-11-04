@@ -6,12 +6,14 @@
 (require-package 'helm-ag)
 (require-package 'helm-ls-git)
 (require-package 'helm-gtags)
+(require-package 'helm-mt)
 
 
 (require 'helm)
 (require 'helm-config)
 (require 'helm-ag)
 (require 'helm-ls-git)
+(require 'helm-mt)
 
 
 
@@ -90,6 +92,8 @@
 ;; Original "C-c h f" is "helm-multi-files"
 (global-set-key (kbd "C-c h f") 'helm-find-files)
 
+;;; helm-mt
+(helm-mt/wrap-shells t)
 
 
 (provide 'init-helm)
