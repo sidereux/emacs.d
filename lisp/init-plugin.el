@@ -127,4 +127,10 @@
 (require 'expand-region)
 (global-set-key (kbd "C-=") 'er/expand-region)
 
+
+;;; clang-format
+(require-package 'clang-format)
+(require 'clang-format)
+(setq-default clang-format-style "{IndentWidth: 4}")
+
 (provide 'init-plugin)
