@@ -114,4 +114,10 @@
 ;;   '(setq which-func-modes '(c-mode c++-mode python-mode)))
 (setq which-func-modes '(c-mode c++-mode python-mode))
 
+
+;; scroll-bar
+(set-scroll-bar-mode 'left)
+(set-face-foreground 'scroll-bar "#f2f1f0")
+(set-face-background 'scroll-bar "#4c4c4c")
+
 (provide 'init-common)
