@@ -30,9 +30,6 @@
 ;; Make the search case-sensitive
 (setq-default case-fold-search nil)
 
-;; Disable toolbar
-(add-hook 'after-init-hook (lambda ()
-                             (tool-bar-mode 0)))
 
 ;; Make "M-x shell-command" read rc file
 (setq shell-command-switch "-ic")
@@ -115,9 +112,15 @@
 (setq which-func-modes '(c-mode c++-mode python-mode))
 
 
-;; scroll-bar
-(set-scroll-bar-mode 'left)
-(set-face-foreground 'scroll-bar "#f2f1f0")
-(set-face-background 'scroll-bar "#4c4c4c")
+(add-hook 'afte-rmake-frame-functions
+          (lambda ()
+            (progn
+              ;; Disable toolbar
+              (tool-bar-mode 0)
+              ;; scroll-bar
+              (set-scroll-bar-mode 'left)
+              (set-face-foreground 'scroll-bar "#f2f1f0")
+              (set-face-background 'scroll-bar "#4c4c4c")
+              )))
 
 (provide 'init-common)
