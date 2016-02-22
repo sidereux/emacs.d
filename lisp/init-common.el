@@ -112,15 +112,14 @@
 (setq which-func-modes '(c-mode c++-mode python-mode))
 
 
-(add-hook 'afte-rmake-frame-functions
-          (lambda ()
-            (progn
-              ;; Disable toolbar
-              (tool-bar-mode 0)
-              ;; scroll-bar
-              (set-scroll-bar-mode 'left)
-              (set-face-foreground 'scroll-bar "#f2f1f0")
-              (set-face-background 'scroll-bar "#4c4c4c")
-              )))
+(if (display-graphic-p)
+    (progn
+      ;; Disable toolbar
+      (tool-bar-mode 0)
+      ;; scroll-bar
+      (set-scroll-bar-mode 'left)
+      (set-face-foreground 'scroll-bar "#f2f1f0")
+      (set-face-background 'scroll-bar "#4c4c4c")
+      ))
 
 (provide 'init-common)
