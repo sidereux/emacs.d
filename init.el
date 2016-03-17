@@ -13,6 +13,7 @@
 (require 'init-javascript)
 (require 'init-coffee)
 (require 'init-evil)
+(require 'init-golang)
 
 ;; load custom.el if exist
 (setq custom-file (expand-file-name "custom.el" user-emacs-directory))
