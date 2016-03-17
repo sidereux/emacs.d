@@ -11,6 +11,5 @@
 ;; enable highlight indentation and flycheck
 (add-hook 'c-mode-common-hook 'highlight-indentation-mode)
 (add-hook 'c-mode-common-hook 'flycheck-mode)
-(add-hook 'c-mode-common-hook 'yas-minor-mode)
 
 (provide 'init-c)
