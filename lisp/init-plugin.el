@@ -27,15 +27,23 @@
 
 (require 'company-go)
 
+;; run 'gcc -xc++ -E -v -'
 (setq company-c-headers-path-system
-      '("/usr/include/"
-        "/usr/local/include/"
-        "/usr/include/x86_64-linux-gnu/"))
+      '(
+        "/usr/include/c++/5"
+        "/usr/include/x86_64-linux-gnu/c++/5"
+        "/usr/include/c++/5/backward"
+        "/usr/lib/gcc/x86_64-linux-gnu/5/include"
+        "/usr/local/include"
+        "/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed"
+        "/usr/include/x86_64-linux-gnu"
+        "/usr/include"
+        ))
 
-(setq company-clang-arguments
-      '("-I/usr/include/"
-        "-I/usr/local/include/"
-        "-I/usr/include/x86_64-linux-gnu/"))
+;; (setq company-clang-arguments
+;;       '("-I/usr/include/"
+;;         "-I/usr/local/include/"
+;;         "-I/usr/include/x86_64-linux-gnu/"))
 
 (global-set-key (kbd "C-c f") 'company-files)
 
