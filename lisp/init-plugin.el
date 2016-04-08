@@ -140,4 +140,12 @@
 (require 'clang-format)
 (setq-default clang-format-style "{IndentWidth: 4}")
 
+
+;;; yaml-mode
+(require-package 'yaml-mode)
+
+
+;;; fic-mode
+(require-package 'fic-mode)
+
 (provide 'init-plugin)

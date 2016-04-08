@@ -122,4 +122,9 @@
       (set-face-background 'scroll-bar "#4c4c4c")
       ))
 
+;; make speedbar support golang
+(add-hook 'speedbar-load-hook
+          (lambda ()
+            (speedbar-add-supported-extension "go")))
+
 (provide 'init-common)
