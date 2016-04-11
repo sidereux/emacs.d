@@ -147,5 +147,11 @@
 
 ;;; fic-mode
 (require-package 'fic-mode)
+(add-to-list 'auto-mode-alist '("\\.yml$" . yaml-mode))
+
+
+;;; dockerfile-mode
+(require-package 'dockerfile-mode)
+(add-to-list 'auto-mode-alist '("Dockerfile\\'" . dockerfile-mode))
 
 (provide 'init-plugin)

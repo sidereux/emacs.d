@@ -30,6 +30,8 @@
 ;; Make the search case-sensitive
 (setq-default case-fold-search nil)
 
+;; Auto Revert Mode
+(global-auto-revert-mode t)
 
 ;; Make "M-x shell-command" read rc file
 (setq shell-command-switch "-ic")
