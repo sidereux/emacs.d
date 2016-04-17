@@ -10,6 +10,8 @@
 
 ;; enable highlight indentation and flycheck
 (add-hook 'c-mode-common-hook 'highlight-indentation-mode)
+
+;; Install cppcheck https://github.com/danmar/cppcheck/releases
 (add-hook 'c-mode-common-hook 'flycheck-mode)
 
 (provide 'init-c)
