@@ -13,7 +13,11 @@
 
 ;; set highlight indentation
 (add-hook 'js2-mode-hook 'highlight-indentation-mode)
+
+;; npm install -g eslint
 (add-hook 'js2-mode-hook 'flycheck-mode)
+;; npm install -g jsonlint
+(add-hook 'json-mode-hook 'flycheck-mode)
 
 
 (provide 'init-javascript)
