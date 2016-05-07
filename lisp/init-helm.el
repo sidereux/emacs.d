@@ -47,6 +47,7 @@
 
 ;;; helm-ag
 (setq helm-ag-use-grep-ignore-list t)
+(setq helm-ag-insert-at-point 'symbol)
 (global-set-key (kbd "C-c h g") 'helm-do-ag)
 
 
