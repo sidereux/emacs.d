@@ -13,11 +13,7 @@
 (add-hook 'python-mode-hook 'eldoc-mode)
 (add-hook 'python-mode-hook 'anaconda-eldoc-mode)
 
-;; virtualenvwrapper
-(require-package 'virtualenvwrapper)
-(require 'virtualenvwrapper)
-(venv-initialize-interactive-shells)
-(venv-initialize-eshell)
+(require-package 'pyvenv)
 
 
 (provide 'init-python)
