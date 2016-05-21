@@ -7,6 +7,7 @@
 (require-package 'helm-ls-git)
 (require-package 'helm-gtags)
 (require-package 'helm-mt)
+(require-package 'helm-swoop)
 
 
 (require 'helm)
@@ -14,6 +15,7 @@
 (require 'helm-ag)
 (require 'helm-ls-git)
 (require 'helm-mt)
+(require 'helm-swoop)
 
 
 
