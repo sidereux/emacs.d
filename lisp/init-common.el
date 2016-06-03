@@ -33,6 +33,10 @@
 ;; Auto Revert Mode
 (global-auto-revert-mode t)
 
+;; Auto save
+(setq auto-save-interval 5
+      auto-save-timeout 3)
+
 ;; Make "M-x shell-command" read rc file
 (setq shell-command-switch "-ic")
 
