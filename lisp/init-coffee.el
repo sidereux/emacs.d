@@ -5,7 +5,6 @@
 
 ;; enable highlight indentation and flycheck
 (add-hook 'coffee-mode-hook 'highlight-indentation-mode)
-(add-hook 'coffee-mode-hook 'flycheck-mode)
 
 ;; Insert appropriate number of coffee-tab-with according to
 ;; coffee-previous-indent and coffee-line-wants-indent.

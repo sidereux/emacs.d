@@ -73,7 +73,8 @@
 ;; Quick start : http://www.flycheck.org/manual/latest/Quickstart.html
 (require-package 'flycheck)
 ;; Install ShellCheck https://github.com/koalaman/shellcheck/releases
-(add-hook 'sh-mode-hook 'flycheck-mode)
+
+(global-flycheck-mode)
 
 
 ;;; Markdown mode

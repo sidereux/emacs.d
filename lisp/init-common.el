@@ -7,9 +7,6 @@
 ;; Use space instead of tab
 (setq-default indent-tabs-mode nil)
 
-;; Set indents to 4 spaces
-(setq-default tab-width 4)
-
 ;; Scroll Smoothly
 (setq redisplay-dont-pause t)
 (setq scroll-margin 9)
@@ -45,7 +42,6 @@
 (setq windmove-wrap-around t)
 
 ;; Make '_' a word character
-(modify-syntax-entry ?_ "w")
 (add-hook 'sh-mode-hook
           (lambda () (modify-syntax-entry ?_ "w" sh-mode-syntax-table)))
 

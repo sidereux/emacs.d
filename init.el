@@ -5,6 +5,8 @@
 (require 'init-common)
 
 ;; load init-elpa before init-auto-complete
+(require 'init-evil)
+(require 'init-windows)
 (require 'init-plugin)
 (require 'init-helm)
 (require 'init-ido)
@@ -12,7 +14,6 @@
 (require 'init-python)
 (require 'init-javascript)
 (require 'init-coffee)
-(require 'init-evil)
 (require 'init-golang)
 
 ;; load custom.el if exist

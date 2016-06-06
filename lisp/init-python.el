@@ -3,7 +3,6 @@
 
 ;; enable highlight indentation and flycheck
 (add-hook 'python-mode-hook 'highlight-indentation-mode)
-(add-hook 'python-mode-hook 'flycheck-mode)
 
 ;; make '_' a word character
 (add-hook 'python-mode-hook

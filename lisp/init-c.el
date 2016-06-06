@@ -1,3 +1,6 @@
+;; Install cppcheck https://github.com/danmar/cppcheck/releases
+;; set CFGDIR=/usr/share/cppcheck when run make and make install
+
 ;; DO NOT USE GNU STYLE OF INDENTING
 (setq c-default-style "linux"
       c-basic-offset 4)
@@ -10,9 +13,5 @@
 
 ;; enable highlight indentation and flycheck
 (add-hook 'c-mode-common-hook 'highlight-indentation-mode)
-
-;; Install cppcheck https://github.com/danmar/cppcheck/releases
-;; set CFGDIR=/usr/share/cppcheck when run make and make install
-(add-hook 'c-mode-common-hook 'flycheck-mode)
 
 (provide 'init-c)
