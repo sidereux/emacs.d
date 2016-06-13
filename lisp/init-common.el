@@ -74,7 +74,7 @@
 
 ;; highlight search keyword
 (require-package 'highlight)
-(defvar my:highlight-keyword-len 3
+(defvar my:highlight-keyword-len 1
   "Minimum length of keyword to be highlighted.")
 (defvar my:highlight-keyword-str nil
   "Keyword to be highlighted.")
@@ -99,7 +99,8 @@
        (list (current-buffer))))))
 
 (advice-add 'isearch-exit :after 'my:highlight-keyword)
-(advice-add 'evil-flash-search-pattern :after 'my:highlight-keyword)
+(advice-add 'evil-search :after 'my:highlight-keyword)
+(advice-add 'evil-search-incrementally :after 'my:highlight-keyword)
 
 ;; bison mode
 (require 'bison-mode)

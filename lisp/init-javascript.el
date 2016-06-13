@@ -1,6 +1,5 @@
-;; npm install -g eslint
-;; npm install -g standard
 ;; npm install -g jsonlint
+;; npm install -g standard
 
 (require-package 'json-mode)
 (require-package 'js2-mode)
