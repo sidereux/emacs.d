@@ -1,9 +1,6 @@
 ;; pyenv
 (require-package 'pyenv-mode)
 
-;; enable highlight indentation and flycheck
-(add-hook 'python-mode-hook 'highlight-indentation-mode)
-
 ;; make '_' a word character
 (add-hook 'python-mode-hook
           (lambda () (modify-syntax-entry ?_ "w" python-mode-syntax-table)))

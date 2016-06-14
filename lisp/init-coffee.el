@@ -3,9 +3,6 @@
 ;; set tab width to 2
 (custom-set-variables '(coffee-tab-width 2))
 
-;; enable highlight indentation and flycheck
-(add-hook 'coffee-mode-hook 'highlight-indentation-mode)
-
 ;; Insert appropriate number of coffee-tab-with according to
 ;; coffee-previous-indent and coffee-line-wants-indent.
 (defun my:coffee-indent-line ()

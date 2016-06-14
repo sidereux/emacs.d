@@ -60,8 +60,8 @@
 
 
 ;;; Highlight Indentation
-(require-package 'highlight-indentation)
-(add-hook 'emacs-lisp-mode-hook 'highlight-indentation-mode)
+(require-package 'highlight-indent-guides)
+(add-hook 'prog-mode-hook 'highlight-indent-guides-mode)
 
 
 ;;; Uniquify - Making buffer names unique

@@ -11,7 +11,4 @@
                        (modify-syntax-entry ?_ "w" c-mode-syntax-table)
                        (modify-syntax-entry ?_ "w" c++-mode-syntax-table))))
 
-;; enable highlight indentation and flycheck
-(add-hook 'c-mode-common-hook 'highlight-indentation-mode)
-
 (provide 'init-c)

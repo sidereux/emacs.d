@@ -19,9 +19,6 @@
 ;; set js2-mode indent
 (setq js2-basic-offset 2)
 
-;; set highlight indentation
-(add-hook 'js2-mode-hook 'highlight-indentation-mode)
-
 ;; enable rainbow-delimiters
 (add-hook 'js2-mode-hook 'rainbow-delimiters-mode)
 
