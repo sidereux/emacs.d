@@ -75,9 +75,9 @@
 ;; highlight search keyword
 (defvar my:highlight-keyword-len 2
   "Minimum length of keyword to be highlighted.")
-(defvar my:highlight-keyword-str nil
+(defvar-local my:highlight-keyword-str nil
   "Keyword to be highlighted.")
-(defvar my:highlight-keyword-prev-str nil
+(defvar-local my:highlight-keyword-prev-str nil
   "Previous highlighted keyword.")
 
 (defun my:highlight-keyword (&rest args)
@@ -90,11 +90,14 @@
   (when (and (>= (length my:highlight-keyword-str) my:highlight-keyword-len)
              (not (string-equal my:highlight-keyword-str
                                 my:highlight-keyword-prev-str)))
+    (message "highlight")
     (unhighlight-regexp my:highlight-keyword-prev-str)
     (highlight-regexp my:highlight-keyword-str 'evil-ex-search)))
 
 (advice-add 'isearch-exit :after 'my:highlight-keyword)
 (advice-add 'evil-search :after 'my:highlight-keyword)
+(advice-add 'evil-search-next :after 'my:highlight-keyword)
+(advice-add 'evil-search-previous :after 'my:highlight-keyword)
 (advice-add 'evil-search-incrementally :after 'my:highlight-keyword)
 
 ;; bison mode
