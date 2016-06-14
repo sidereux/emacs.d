@@ -157,4 +157,9 @@
 (require-package 'dockerfile-mode)
 (add-to-list 'auto-mode-alist '("Dockerfile\\'" . dockerfile-mode))
 
+;;; counsel swiper and ivy
+(require-package 'swiper)
+(require-package 'counsel)
+(ivy-mode t)
+
 (provide 'init-plugin)
