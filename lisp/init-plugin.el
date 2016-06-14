@@ -160,6 +160,6 @@
 ;;; counsel swiper and ivy
 (require-package 'swiper)
 (require-package 'counsel)
-(ivy-mode t)
+;; (ivy-mode t)
 
 (provide 'init-plugin)
