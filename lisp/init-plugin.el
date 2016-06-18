@@ -146,6 +146,10 @@
 
 ;;; yaml-mode
 (require-package 'yaml-mode)
+;; make '_' as a word character
+(add-hook 'yaml-mode-hook
+          (lambda () (modify-syntax-entry ?_ "w" yaml-mode-syntax-table)))
+
 
 
 ;;; fic-mode
