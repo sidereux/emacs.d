@@ -2,6 +2,7 @@
 (add-to-list 'load-path (expand-file-name "site-lisp" user-emacs-directory))
 
 (require 'init-elpa)
+(require 'init-util)
 (require 'init-common)
 
 ;; load init-elpa before init-auto-complete
