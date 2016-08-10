@@ -6,6 +6,7 @@
 
 ;; Use space instead of tab
 (setq-default indent-tabs-mode nil)
+(setq-default tab-width 4)
 
 ;; Scroll Smoothly
 (setq redisplay-dont-pause t)
