@@ -166,4 +166,17 @@
 (require-package 'counsel)
 ;; (ivy-mode t)
 
+;;; nlinum and nlinum-relative
+(require-package 'nlinum)
+(require-package 'nlinum-relative)
+
+(global-nlinum-mode t)
+
+(require 'nlinum-relative)
+(nlinum-relative-setup-evil)
+(add-hook 'prog-mode-hook 'nlinum-relative-mode)
+(setq nlinum-relative-redisplay-delay 0)
+;; (setq nlinum-relative-current-symbol "->")
+(setq nlinum-relative-offset 0)
+
 (provide 'init-plugin)
