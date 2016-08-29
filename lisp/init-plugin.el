@@ -149,12 +149,11 @@
 ;; make '_' as a word character
 (add-hook 'yaml-mode-hook
           (lambda () (modify-syntax-entry ?_ "w" yaml-mode-syntax-table)))
-
+(add-to-list 'auto-mode-alist '("\\.yml$" . yaml-mode))
 
 
 ;;; fic-mode
 (require-package 'fic-mode)
-(add-to-list 'auto-mode-alist '("\\.yml$" . yaml-mode))
 
 
 ;;; dockerfile-mode
