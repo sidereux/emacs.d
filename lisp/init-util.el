@@ -28,7 +28,6 @@
   (when (and (>= (length my:highlight-keyword-str) my:highlight-keyword-len)
              (not (string-equal my:highlight-keyword-str
                                 my:highlight-keyword-prev-str)))
-    (message "highlight")
     (unhighlight-regexp my:highlight-keyword-prev-str)
     (highlight-regexp my:highlight-keyword-str 'evil-ex-search)))
 
@@ -37,6 +36,7 @@
 (advice-add 'evil-search-next :after 'my:highlight-keyword)
 (advice-add 'evil-search-previous :after 'my:highlight-keyword)
 (advice-add 'evil-search-incrementally :after 'my:highlight-keyword)
+
 
 
 (provide 'init-util)

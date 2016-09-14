@@ -7,6 +7,7 @@
 ;; INSTALL go get -u github.com/rogpeppe/godef
 (add-hook 'go-mode-hook 'go-eldoc-setup)
 
+(require-package 'go-projectile)
 
 
 (provide 'init-golang)

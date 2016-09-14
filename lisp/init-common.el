@@ -87,4 +87,7 @@
       (set-face-background 'scroll-bar "#4c4c4c")
       ))
 
+;; use regexp search
+(setq isearch-regexp t)
+
 (provide 'init-common)
