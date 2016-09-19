@@ -95,8 +95,5 @@
 ;; Original "C-c h f" is "helm-multi-files"
 (global-set-key (kbd "C-c h f") 'helm-find-files)
 
-;;; helm-mt
-(helm-mt/wrap-shells t)
-
 
 (provide 'init-helm)
