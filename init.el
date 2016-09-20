@@ -8,6 +8,19 @@
 (add-to-list 'load-path (expand-file-name "lisp" user-emacs-directory))
 (add-to-list 'load-path (expand-file-name "site-lisp" user-emacs-directory))
 
+(require 'org)
+(defun my:org-babel-load-file (filename &optional folder)
+  "Load org file FILENAME as init file.
+If FOLDER provided, then look for file in folder."
+  (interactive)
+  (let ((fullpath (expand-file-name
+                   filename
+                   (if folder
+                       (expand-file-name folder user-emacs-directory)
+                     (expand-file-name user-emacs-directory)))))
+    (message fullpath)
+    (org-babel-load-file fullpath)))
+
 (require 'init-elpa)
 (require 'init-util)
 (require 'init-common)
@@ -22,9 +35,11 @@
 (require 'init-python)
 (require 'init-javascript)
 (require 'init-coffee)
-(require 'init-golang)
+
+(my:org-babel-load-file "init-golang.org" "lisp")
 
 ;; load custom.el if exist
 (setq custom-file (expand-file-name "custom.el" user-emacs-directory))
 (when (file-exists-p custom-file)
   (load custom-file))
+
