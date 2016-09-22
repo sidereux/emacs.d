@@ -36,7 +36,8 @@ If FOLDER provided, then look for file in folder."
 (require 'init-javascript)
 (require 'init-coffee)
 
-(my:org-babel-load-file "init-golang.org" "lisp")
+(my:org-babel-load-file "lisp/init-golang.org")
+(my:org-babel-load-file "lisp/init-vc.org")
 
 ;; load custom.el if exist
 (setq custom-file (expand-file-name "custom.el" user-emacs-directory))

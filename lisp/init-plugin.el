@@ -118,9 +118,6 @@
 (require-package 'window-numbering)
 (window-numbering-mode t)
 
-;;; magit
-(require-package 'magit)
-
 ;;; lemon-mode
 (require-package 'lemon-mode)
 
