@@ -38,6 +38,7 @@ If FOLDER provided, then look for file in folder."
 
 (my:org-babel-load-file "lisp/init-golang.org")
 (my:org-babel-load-file "lisp/init-vc.org")
+(my:org-babel-load-file "lisp/init-org.org")
 
 ;; load custom.el if exist
 (setq custom-file (expand-file-name "custom.el" user-emacs-directory))
