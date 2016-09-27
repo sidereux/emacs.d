@@ -8,6 +8,10 @@
 (add-to-list 'load-path (expand-file-name "lisp" user-emacs-directory))
 (add-to-list 'load-path (expand-file-name "site-lisp" user-emacs-directory))
 
+(require 'package)
+(add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/"))
+(package-initialize)
+
 (require 'org)
 (defun my:org-babel-load-file (filename &optional folder)
   "Load org file FILENAME as init file.
@@ -21,7 +25,12 @@ If FOLDER provided, then look for file in folder."
     (message fullpath)
     (org-babel-load-file fullpath)))
 
-(require 'init-elpa)
+(my:org-babel-load-file "org/elpa.org")
+
+(my:org-babel-load-file "org/init-golang.org")
+(my:org-babel-load-file "org/init-vc.org")
+(my:org-babel-load-file "org/init-org.org")
+
 (require 'init-util)
 (require 'init-common)
 
@@ -35,10 +44,6 @@ If FOLDER provided, then look for file in folder."
 (require 'init-python)
 (require 'init-javascript)
 (require 'init-coffee)
-
-(my:org-babel-load-file "lisp/init-golang.org")
-(my:org-babel-load-file "lisp/init-vc.org")
-(my:org-babel-load-file "lisp/init-org.org")
 
 ;; load custom.el if exist
 (setq custom-file (expand-file-name "custom.el" user-emacs-directory))
