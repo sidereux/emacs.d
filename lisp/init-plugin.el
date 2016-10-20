@@ -105,14 +105,8 @@
 (require-package 'rainbow-delimiters)
 (add-hook 'emacs-lisp-mode-hook 'rainbow-delimiters-mode)
 
-;;; ace-jump-mode
-(require-package 'ace-jump-mode)
-(autoload 'ace-jump-mode "ace-jump-mode" "Emacs quick move minor mode" t)
-;; (define-key global-map (kbd "C-c j") 'ace-jump-mode)
-
-;; (autoload 'ace-jump-mode-pop-mark "ace-jump-mode" "Ace jump back:-)" t)
-;; (eval-after-load "ace-jump-mode" '(ace-jump-mode-enable-mark-sync))
-;; (define-key global-map (kbd "C-c p") 'ace-jump-mode-pop-mark)
+;;; avy-mode
+(require-package 'avy)
 
 ;;; window-numbering
 (require-package 'window-numbering)

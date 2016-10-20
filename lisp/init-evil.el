@@ -64,8 +64,8 @@
 (evil-leader/set-key "gr" 'helm-gtags-find-rtag)
 (evil-leader/set-key "gp" 'helm-gtags-pop-stack)
 
-;; key maps for ace-jump
-(evil-leader/set-key "j" 'ace-jump-mode)
+;; key maps for avy
+(evil-leader/set-key "j" 'avy-goto-char)
 
 
 (provide 'init-evil)
