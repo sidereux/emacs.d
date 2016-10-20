@@ -12,27 +12,27 @@
 (add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/"))
 (package-initialize)
 
-(require 'org)
-(defun my:org-babel-load-file (filename &optional folder)
-  "Load org file FILENAME as init file.
-If FOLDER provided, then look for file in folder."
-  (interactive)
-  (let ((fullpath (expand-file-name
-                   filename
-                   (if folder
-                       (expand-file-name folder user-emacs-directory)
-                     (expand-file-name user-emacs-directory)))))
-    (message fullpath)
-    (org-babel-load-file fullpath)))
+;; (require 'org)
+;; (defun my:org-babel-load-file (filename &optional folder)
+;;   "Load org file FILENAME as init file.
+;; If FOLDER provided, then look for file in folder."
+;;   (interactive)
+;;   (let ((fullpath (expand-file-name
+;;                    filename
+;;                    (if folder
+;;                        (expand-file-name folder user-emacs-directory)
+;;                      (expand-file-name user-emacs-directory)))))
+;;     (message fullpath)
+;;     (org-babel-load-file fullpath)))
 
-(my:org-babel-load-file "org/elpa.org")
-
-(my:org-babel-load-file "org/init-golang.org")
-(my:org-babel-load-file "org/init-vc.org")
-(my:org-babel-load-file "org/init-org.org")
+;; (my:org-babel-load-file "org/elpa.org")
+;; (my:org-babel-load-file "org/init-golang.org")
+;; (my:org-babel-load-file "org/init-vc.org")
+;; (my:org-babel-load-file "org/init-org.org")
 
 (require 'init-util)
 (require 'init-common)
+(require 'init-elpa)
 
 ;; load init-elpa before init-auto-complete
 (require 'init-evil)
@@ -44,6 +44,9 @@ If FOLDER provided, then look for file in folder."
 (require 'init-python)
 (require 'init-javascript)
 (require 'init-coffee)
+(require 'init-terminal)
+(require 'init-golang)
+(require 'init-org)
 
 ;; load custom.el if exist
 (setq custom-file (expand-file-name "custom.el" user-emacs-directory))
