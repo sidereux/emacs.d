@@ -15,7 +15,7 @@
 (require-package 'go-mode)
 (require-package 'go-eldoc)
 
-(require 'go-mode-autoloads)
+(require 'go-mode)
 (require 'go-eldoc)
 
 
