@@ -46,6 +46,7 @@
 (require 'init-coffee)
 (require 'init-terminal)
 (require 'init-golang)
+(require 'init-vc)
 (require 'init-org)
 
 ;; load custom.el if exist
