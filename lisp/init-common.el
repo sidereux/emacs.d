@@ -90,4 +90,7 @@
 ;; use regexp search
 (setq isearch-regexp t)
 
+;; set font to ubuntu mono
+;; (set-frame-font "ubuntu mono")
+
 (provide 'init-common)
