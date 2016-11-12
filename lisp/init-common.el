@@ -26,7 +26,7 @@
 (global-hl-line-mode t)
 
 ;; case-fold-search must be t or org-babel-tangle will not work
-(setq-default case-fold-search t)
+;; (setq-default case-fold-search t)
 
 ;; Auto Revert Mode
 (global-auto-revert-mode t)
