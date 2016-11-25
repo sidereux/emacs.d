@@ -47,6 +47,8 @@
 
 (global-set-key (kbd "C-c f") 'company-files)
 
+(setq company-dabbrev-downcase nil)
+
 (add-hook 'after-init-hook 'global-company-mode)
 (add-hook 'global-company-mode-hook
           (lambda ()
