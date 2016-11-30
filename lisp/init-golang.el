@@ -11,6 +11,8 @@
 
 (add-hook 'go-mode-hook 'go-eldoc-setup)
 
+(add-hook 'go-mode-hook '(lambda () (add-hook 'before-save-hook 'gofmt nil t)))
+
 (require-package 'go-projectile)
 
 (provide 'init-golang)
