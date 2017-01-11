@@ -12,6 +12,25 @@
 (add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/"))
 (package-initialize)
 
+;; require-package function
+;; If package already installed, then skip
+;; If package name in package-archive-contents or no-refresh is t,
+;; then install the package
+;; else refresh package contents and call require-package again
+;; with no-refresh
+(defun require-package (package &optional min-version no-refresh)
+  "Install PACKAGE with MIN-VERSION.
+if package name was found in package-archive-contents
+or NO-REFRESH is true, local package info will not be refreshed"
+  (if (package-installed-p package min-version)
+      t
+    (if (or (assoc package package-archive-contents) no-refresh)
+        (package-install package)
+      (progn
+        (package-refresh-contents)
+        (require-package package min-version t)))))
+
+
 ;; (require 'org)
 ;; (defun my:org-babel-load-file (filename &optional folder)
 ;;   "Load org file FILENAME as init file.
@@ -25,14 +44,12 @@
 ;;     (message fullpath)
 ;;     (org-babel-load-file fullpath)))
 
-;; (my:org-babel-load-file "org/elpa.org")
 ;; (my:org-babel-load-file "org/init-golang.org")
 ;; (my:org-babel-load-file "org/init-vc.org")
 ;; (my:org-babel-load-file "org/init-org.org")
 
 (require 'init-util)
 (require 'init-common)
-(require 'init-elpa)
 
 ;; load init-elpa before init-auto-complete
 (require 'init-evil)
