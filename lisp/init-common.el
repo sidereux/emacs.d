@@ -3,6 +3,7 @@
 ;; Save the cursor posision
 (require 'saveplace)
 (setq-default save-place t)
+(setq server-visit-hook 'save-place-find-file-hook)
 
 ;; Use space instead of tab
 (setq-default indent-tabs-mode nil)
