@@ -17,8 +17,6 @@
 
 (add-hook 'go-mode-hook '(lambda () (add-hook 'before-save-hook 'gofmt nil t)))
 
-(require-package 'go-projectile)
-
 (defun my:setenv-gopath ()
   "Set GOPATH environment variable."
   (interactive)
