@@ -37,6 +37,16 @@
 (advice-add 'evil-search-previous :after 'my:highlight-keyword)
 (advice-add 'evil-search-incrementally :after 'my:highlight-keyword)
 
+(defun my:pandoc-export-file-to-html ()
+  "Export file to html."
+  (interactive)
+  (let* ((srcfilename (read-file-name "Select file: "))
+         (htmlfilename (format "%s.html" (file-name-sans-extension srcfilename)))
+         (pandoc-cmd (format "pandoc %s -o %s -s --highlight-style=pygments --toc --toc-depth=5" srcfilename htmlfilename))
+         )
+    (message pandoc-cmd)
+    (start-process-shell-command "pandoc" "*Messages*" pandoc-cmd)
+    ))
 
 
 (provide 'init-util)
