@@ -59,7 +59,7 @@
 ;; org-mode
 ;; open url with "xdg-open"
 (setq browse-url-browser-function 'browse-url-generic
-      browse-url-generic-program "xdg-open")
+      browse-url-generic-program (my:generic-open-command))
 
 ;; bison mode
 (require 'bison-mode)

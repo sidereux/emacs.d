@@ -37,16 +37,52 @@
 (advice-add 'evil-search-previous :after 'my:highlight-keyword)
 (advice-add 'evil-search-incrementally :after 'my:highlight-keyword)
 
-(defun my:pandoc-export-file-to-html ()
-  "Export file to html."
+(defun my:compile-now ()
+  "Compile without prompt."
   (interactive)
-  (let* ((srcfilename (read-file-name "Select file: "))
+  (let ((compilation-read-command nil))
+    (compile "make -k")
+    ))
+
+(defun my:generic-open-command ()
+  "Get open command.
+return 'xdg-open' for linux, 'open' for osx."
+  (cond ((string= system-type "darwin") "open")
+        ((string= system-type "gnu/linux") "xdg-open")
+        (t "unknown-open-command")))
+
+(defun my:open-file (&optional filename)
+  "Open file using external program.
+If FILENAME not provided, select file from disk."
+  (interactive)
+  (let ((filename (if (eq filename nil)
+                      (read-file-name "Select file: ")
+                    filename)))
+    (message (format "open command is: %s" (my:generic-open-command)))
+    (start-process-shell-command "open" "*Messages*" (format "%s %s" (my:generic-open-command) filename))))
+
+(defun my:pandoc-export-file-to-html (&optional filename)
+  "Export file to html, return html file path.
+If FILENAME not provided, select file from disk."
+  (interactive)
+  (let* ((srcfilename (if (eq filename nil)
+                          (read-file-name "Select file: ")
+                        filename))
          (htmlfilename (format "%s.html" (file-name-sans-extension srcfilename)))
          (pandoc-cmd (format "pandoc %s -o %s -s --highlight-style=pygments --toc --toc-depth=5" srcfilename htmlfilename))
          )
     (message pandoc-cmd)
     (start-process-shell-command "pandoc" "*Messages*" pandoc-cmd)
+    htmlfilename
     ))
 
+(defun my:pandoc-export-file-to-html-and-open ()
+  "Export file to html and open html in browser."
+  (interactive)
+  (let* ((filename (read-file-name "Select file: "))
+         (htmlfilename (my:pandoc-export-file-to-html filename)))
+    (message (format "html file name: %s" htmlfilename))
+    (my:open-file htmlfilename)
+    ))
 
 (provide 'init-util)
