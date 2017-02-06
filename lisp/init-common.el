@@ -15,7 +15,8 @@
 (setq scroll-conservatively 1000)
 
 ;; Change the size of a font for the current frame
-(set-face-attribute 'default (selected-frame) :height 150)
+(my:resize-frame-font-size (selected-frame))
+(add-hook 'after-make-frame-functions 'my:resize-frame-font-size)
 
 ;; Display column number
 (column-number-mode t)
@@ -46,6 +47,8 @@
 ;; Make '_' a word character
 (add-hook 'sh-mode-hook
           (lambda () (modify-syntax-entry ?_ "w" sh-mode-syntax-table)))
+(add-hook 'perl-mode-hook
+          (lambda () (modify-syntax-entry ?_ "w" perl-mode-syntax-table)))
 
 ;; Autopairing
 (electric-pair-mode t)

@@ -37,6 +37,13 @@
 (advice-add 'evil-search-previous :after 'my:highlight-keyword)
 (advice-add 'evil-search-incrementally :after 'my:highlight-keyword)
 
+(defun my:resize-frame-font-size (frame &optional size)
+  "Resize FRAME by SIZE.
+SIZE default is 150"
+  (let ((frame-size (if (eq nil size) 150 size)))
+    (set-face-attribute 'default frame :height frame-size)
+    ))
+
 (defun my:compile-now ()
   "Compile without prompt."
   (interactive)
