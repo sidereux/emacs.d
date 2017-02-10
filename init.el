@@ -65,6 +65,7 @@ or NO-REFRESH is true, local package info will not be refreshed"
 (require 'init-golang)
 (require 'init-vc)
 (require 'init-org)
+(require 'init-web)
 
 ;; load custom.el if exist
 (setq custom-file (expand-file-name "custom.el" user-emacs-directory))
