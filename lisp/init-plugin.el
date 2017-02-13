@@ -165,4 +165,8 @@
 (exec-path-from-shell-copy-env "GOPATH")
 
 
+;;; nginx-mode
+(require-package 'nginx-mode)
+
+
 (provide 'init-plugin)
