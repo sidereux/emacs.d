@@ -66,6 +66,7 @@ or NO-REFRESH is true, local package info will not be refreshed"
 (require 'init-vc)
 (require 'init-org)
 (require 'init-web)
+(require 'init-typescript)
 
 ;; load custom.el if exist
 (setq custom-file (expand-file-name "custom.el" user-emacs-directory))
