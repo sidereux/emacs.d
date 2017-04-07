@@ -93,6 +93,8 @@
       (set-face-background 'scroll-bar "#4c4c4c")
       ))
 
+(menu-bar-mode 0)
+
 ;; use regexp search
 (setq isearch-regexp t)
 

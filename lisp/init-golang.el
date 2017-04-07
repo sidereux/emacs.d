@@ -17,6 +17,8 @@
 
 (add-hook 'go-mode-hook '(lambda () (add-hook 'before-save-hook 'gofmt nil t)))
 
+(evil-leader/set-key-for-mode 'go-mode "d" 'godef-jump)
+
 (defun my:setenv-gopath ()
   "Set GOPATH environment variable."
   (interactive)
