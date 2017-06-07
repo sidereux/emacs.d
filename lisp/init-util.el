@@ -65,7 +65,7 @@ If FILENAME not provided, select file from disk."
   (let ((filename (if (eq filename nil)
                       (read-file-name "Select file: ")
                     filename)))
-    (message (format "open command is: %s" (my:generic-open-command)))
+    ;; (message (format "open command is: %s" (my:generic-open-command)))
     (start-process-shell-command "open" "*Messages*" (format "%s %s" (my:generic-open-command) filename))))
 
 (defun my:pandoc-export-file-to-html (&optional filename)
@@ -91,5 +91,41 @@ If FILENAME not provided, select file from disk."
     (message (format "html file name: %s" htmlfilename))
     (my:open-file htmlfilename)
     ))
+
+(defun my:plantuml-export-current-file-to-svg-and-open ()
+  "Export current file to svg, file name is current buffer name."
+  (interactive)
+  (let ((svgfilename (format "%s.svg"
+                             (file-name-sans-extension buffer-file-truename)))
+        )
+    (message (format "begin convert"))
+    (my:plantuml-export-file-to-svg buffer-file-truename)
+    (message (format "svg file name is '%s'" svgfilename))
+    (my:open-file svgfilename)
+    )
+  )
+
+(defun my:plantuml-export-file-to-svg (&optional filename)
+  "Export file to svg, return svg file path.
+If FILENAME not provided, select file from disk."
+  (interactive)
+  (let ((srcfilename (if (eq filename nil)
+                         (read-file-name "Select file: ")
+                       filename))
+        )
+    ;; (message srcfilename)
+    (call-process "plantuml" nil "*plantuml-export*" nil "-tsvg" (expand-file-name srcfilename))
+    ))
+
+;; (setq plantuml-jar-path "/usr/local/Cellar/plantuml/1.2017.13/libexec/plantuml.jar")
+(defvar my:generic-convert-and-open-function nil)
+
+(add-hook 'plantuml-mode-hook
+          (lambda () (setq-local my:generic-convert-and-open-function
+                                 'my:plantuml-export-current-file-to-svg-and-open)))
+
+(global-set-key (kbd "C-c C-o") (lambda ()
+                                  (interactive)
+                                  (funcall my:generic-convert-and-open-function)))
 
 (provide 'init-util)

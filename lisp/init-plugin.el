@@ -169,4 +169,7 @@
 (require-package 'nginx-mode)
 
 
+;;; plantuml-mode
+(require-package 'plantuml-mode)
+(add-to-list 'auto-mode-alist '("\\.plantuml\\'" . plantuml-mode))
 (provide 'init-plugin)
