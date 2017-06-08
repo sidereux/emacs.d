@@ -170,6 +170,7 @@
 
 
 ;;; plantuml-mode
-(require-package 'plantuml-mode)
+;; (require-package 'plantuml-mode)
+(require 'plantuml-mode)
 (add-to-list 'auto-mode-alist '("\\.plantuml\\'" . plantuml-mode))
 (provide 'init-plugin)

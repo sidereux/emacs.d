@@ -98,7 +98,6 @@ If FILENAME not provided, select file from disk."
   (let ((svgfilename (format "%s.svg"
                              (file-name-sans-extension buffer-file-truename)))
         )
-    (message (format "begin convert"))
     (my:plantuml-export-file-to-svg buffer-file-truename)
     (message (format "svg file name is '%s'" svgfilename))
     (my:open-file svgfilename)
