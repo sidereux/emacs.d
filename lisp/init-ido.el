@@ -1,5 +1,5 @@
 (require-package 'flx-ido)
-(require-package 'ido-ubiquitous)
+(require-package 'ido-completing-read+)
 (require-package 'idomenu)
 (require-package 'smex)
 
@@ -11,7 +11,7 @@
 (ido-everywhere t)
 (flx-ido-mode t)
 
-(require 'ido-ubiquitous)
+(require 'ido-completing-read+)
 (ido-ubiquitous-mode t)
 
 (setq ido-enable-flex-matching t)

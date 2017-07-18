@@ -2,20 +2,27 @@
 
 (defvar plantuml-mode-hook nil)
 
-(defvar plantuml-keywords
-  '("split" "split again" "end split"
-    "if" "else" "elseif" "endif"
-    "repeat" "repeat while"
+(defun plantuml-wrap-single-line-regexps(regexps &optional suffix)
+  "Wrap REGEXP as single line regexp prefix ^\\s-* and suffix $"
+  (concat "^\\s-*\\("
+          (mapconcat (lambda (regexp) (concat "\\(" regexp "\\)"))
+                     regexps "\\|")
+          "\\)"))
+
+(defvar plantuml-single-line-keywords
+  '("split again" "split" "end split"
+    "if (.*?) then (.*?)" "if (.*?)" "else (.*?)" "elseif (.*?) then (.*?)" "elseif (.*?)" "endif"
+    "repeat while (.*?)" "repeat"
     ))
 
 (defvar plantuml-keywords-regexp
-  (regexp-opt plantuml-keywords 'word))
+  (plantuml-wrap-single-line-regexps plantuml-single-line-keywords t))
 
 (defvar plantuml-keywords-regexp-extra
   "^\\(@startuml\\|@enduml\\|start\\|stop\\)")
 
 (defvar plantuml-mark-regexp
-  "^\\s-*:\\|;$")
+  "^\\s-*:\\|;")
 
 (defconst plantuml-font-lock-keywords
   (list
@@ -24,11 +31,11 @@
    `(,plantuml-mark-regexp . font-lock-builtin-face)
    ))
 
-(defun plantuml-previous-non-empty-indent-level()
-  "Get previous not empty indent level."
+(defun plantuml-previous-non-empty-line-position()
+  "Get previous not empty line."
   (save-excursion
     (let ((need-move-to-previous t)
-          (indent-level 0))
+          (pos 0))
       (while (not (eq need-move-to-previous nil))
         (message (format "current line: %s" (thing-at-point 'line t)))
         (forward-line -1)
@@ -37,15 +44,29 @@
             (progn
               (setq need-move-to-previous nil)
               (message "abort while")
-              (setq indent-level (current-indentation)))
-          (setq indent-level 0)
+              (setq pos (point)))
+          (setq pos (point))
           ))
-      indent-level)))
+      pos)))
 
 (defun plantuml-indent-to-previous-line ()
   "Indent current line to previous non-empty line."
-  (indent-line-to (plantuml-previous-non-empty-indent-level))
-  )
+  (let* ((pos (plantuml-previous-non-empty-line-position))
+         (previous-indentation (save-excursion
+                                 (goto-char pos)
+                                 (current-indentation))))
+    (if (and
+         (or (save-excursion
+               (beginning-of-line)
+               (looking-at plantuml-keywords-regexp))
+             (save-excursion
+               (goto-char pos)
+               (beginning-of-line)
+               (looking-at plantuml-keywords-regexp)))
+         (not (eq 0 (current-indentation))))
+        (indent-line-to (current-indentation))
+      (indent-line-to previous-indentation))
+    ))
 
 (defun plantuml-indent-line-function()
   "PlantUML mode indent line function."
