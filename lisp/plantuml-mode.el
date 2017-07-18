@@ -4,7 +4,7 @@
 
 (defun plantuml-wrap-single-line-regexps(regexps &optional suffix)
   "Wrap REGEXP as single line regexp prefix ^\\s-* and suffix $"
-  (concat "^\\s-*\\("
+  (concat "^[ \t]*\\("
           (mapconcat (lambda (regexp) (concat "\\(" regexp "\\)"))
                      regexps "\\|")
           "\\)"))
@@ -22,7 +22,7 @@
   "^\\(@startuml\\|@enduml\\|start\\|stop\\)")
 
 (defvar plantuml-mark-regexp
-  "^\\s-*:\\|;")
+  "^[ \t]*:\\|;")
 
 (defconst plantuml-font-lock-keywords
   (list
@@ -55,17 +55,22 @@
          (previous-indentation (save-excursion
                                  (goto-char pos)
                                  (current-indentation))))
-    (if (and
-         (or (save-excursion
-               (beginning-of-line)
-               (looking-at plantuml-keywords-regexp))
-             (save-excursion
-               (goto-char pos)
-               (beginning-of-line)
-               (looking-at plantuml-keywords-regexp)))
-         (not (eq 0 (current-indentation))))
-        (indent-line-to (current-indentation))
-      (indent-line-to previous-indentation))
+    (cond ((save-excursion
+             (beginning-of-line)
+             (looking-at plantuml-keywords-regexp))
+           (progn
+             (indent-line-to (current-indentation))))
+          ((and
+            (save-excursion
+              (beginning-of-line)
+              (goto-char pos)
+              (beginning-of-line)
+              (looking-at plantuml-keywords-regexp))
+            (not (eq (current-indentation) 0)))
+           (progn
+             (indent-line-to (current-indentation))))
+          (t (progn
+               (indent-line-to previous-indentation))))
     ))
 
 (defun plantuml-indent-line-function()
