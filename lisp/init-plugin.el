@@ -121,7 +121,7 @@
 (require-package 'yasnippet)
 (require 'yasnippet)
 (setq yas-snippet-dirs
-      (list (expand-file-name "snippets" user-emacs-directory)))
+      (list (expand-file-name "snippets/snippets" user-emacs-directory)))
 (yas-global-mode 1)
 
 
