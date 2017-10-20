@@ -18,7 +18,7 @@
 (defvar-local my:highlight-keyword-prev-str nil
   "Previous highlighted keyword.")
 
-(defun my:highlight-keyword (&rest args)
+(defun my:highlight-keyword()
   "Highlight search keyword."
   (interactive)
   (setq my:highlight-keyword-prev-str my:highlight-keyword-str)
@@ -63,7 +63,7 @@ return 'xdg-open' for linux, 'open' for osx."
 If FILENAME not provided, select file from disk."
   (interactive)
   (let ((filename (if (eq filename nil)
-                      (read-file-name "Select file: ")
+                      (read-file-name "Choose file: ")
                     filename)))
     ;; (message (format "open command is: %s" (my:generic-open-command)))
     (start-process-shell-command "open" "*Messages*" (format "%s %s" (my:generic-open-command) filename))))
@@ -73,7 +73,7 @@ If FILENAME not provided, select file from disk."
 If FILENAME not provided, select file from disk."
   (interactive)
   (let* ((srcfilename (if (eq filename nil)
-                          (read-file-name "Select file: ")
+                          (read-file-name "Choose file: ")
                         filename))
          (htmlfilename (format "%s.html" (file-name-sans-extension srcfilename)))
          (pandoc-cmd (format "pandoc %s -o %s -s --highlight-style=pygments --toc --toc-depth=5" srcfilename htmlfilename))
@@ -86,7 +86,7 @@ If FILENAME not provided, select file from disk."
 (defun my:pandoc-export-file-to-html-and-open ()
   "Export file to html and open html in browser."
   (interactive)
-  (let* ((filename (read-file-name "Select file: "))
+  (let* ((filename (read-file-name "Choose file: "))
          (htmlfilename (my:pandoc-export-file-to-html filename)))
     (message (format "html file name: %s" htmlfilename))
     (my:open-file htmlfilename)
@@ -109,7 +109,7 @@ If FILENAME not provided, select file from disk."
 If FILENAME not provided, select file from disk."
   (interactive)
   (let ((srcfilename (if (eq filename nil)
-                         (read-file-name "Select file: ")
+                         (read-file-name "Choose file: ")
                        filename))
         )
     ;; (message srcfilename)
@@ -126,5 +126,17 @@ If FILENAME not provided, select file from disk."
 (global-set-key (kbd "C-c C-o") (lambda ()
                                   (interactive)
                                   (funcall my:generic-convert-and-open-function)))
+
+(defun my:add-to-env-path()
+  "Add path to PATH environment variable."
+  (interactive)
+  (let ((path (read-directory-name "Choose directory: ")))
+    (my:do-add-to-env "PATH" path)))
+
+(defun my:do-add-to-env(envname path)
+  "Add PATH to ENVNAME."
+  (let ((env-vals (split-string (getenv envname) ":")))
+    (setenv envname (mapconcat 'identity (cons path (remove path env-vals)) ":")))
+  )
 
 (provide 'init-util)
