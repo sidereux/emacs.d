@@ -18,7 +18,7 @@
 (defvar-local my:highlight-keyword-prev-str nil
   "Previous highlighted keyword.")
 
-(defun my:highlight-keyword()
+(defun my:highlight-keyword(&rest args)
   "Highlight search keyword."
   (interactive)
   (setq my:highlight-keyword-prev-str my:highlight-keyword-str)
