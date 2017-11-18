@@ -1,6 +1,7 @@
 ;;; package --- Summary:
 
 ;;; Commentary:
+;; go get -u -v golang.org/x/tools/cmd/goimports
 ;; go get -u -v github.com/golang/lint/golint
 ;; go get -u -v github.com/kisielk/errcheck
 ;;
@@ -15,9 +16,11 @@
 ;;; Code:
 (add-hook 'go-mode-hook 'go-eldoc-setup)
 
-(add-hook 'go-mode-hook '(lambda () (add-hook 'before-save-hook 'gofmt nil t)))
+(add-hook 'go-mode-hook '(lambda () (add-hook 'before-save-hook 'gofmt-before-save nil t)))
 
 (evil-leader/set-key-for-mode 'go-mode "d" 'godef-jump)
+
+(setq gofmt-command "goimports")
 
 (defvar my:goenvs '(("rawgoenv" "~/go" "~/pkg/go" "~/pkg/go/bin"))
   "List of (GOPATH GOROOT gobinpath).")
