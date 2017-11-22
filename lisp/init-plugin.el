@@ -174,3 +174,10 @@
 (require 'plantuml-mode)
 (add-to-list 'auto-mode-alist '("\\.plantuml\\'" . plantuml-mode))
 (provide 'init-plugin)
+
+
+;;; web-mode
+(require-package 'web-mode)
+(require 'web-mode)
+(add-to-list 'auto-mode-alist '("\\.html\\'" . web-mode))
+
