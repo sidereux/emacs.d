@@ -18,7 +18,6 @@
 
 (add-hook 'go-mode-hook '(lambda () (add-hook 'before-save-hook 'gofmt-before-save nil t)))
 
-(evil-leader/set-key-for-mode 'go-mode "d" 'godef-jump)
 
 (setq gofmt-command "goimports")
 

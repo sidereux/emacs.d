@@ -67,5 +67,9 @@
 ;; key maps for avy
 (evil-leader/set-key "j" 'avy-goto-char)
 
+(evil-leader/set-key-for-mode 'python-mode "d" 'anaconda-mode-find-definitions)
+(evil-leader/set-key-for-mode 'go-mode "d" 'godef-jump)
+(evil-leader/set-key-for-mode 'python-mode "r" 'anaconda-mode-find-references)
+
 
 (provide 'init-evil)
