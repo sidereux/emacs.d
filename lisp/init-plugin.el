@@ -65,6 +65,8 @@
 (require-package 'highlight-indent-guides)
 (add-hook 'prog-mode-hook 'highlight-indent-guides-mode)
 (add-hook 'yaml-mode-hook 'highlight-indent-guides-mode)
+(add-hook 'xml-mode-hook 'highlight-indent-guides-mode)
+(add-hook 'nxml-mode-hook 'highlight-indent-guides-mode)
 
 
 ;;; Uniquify - Making buffer names unique
