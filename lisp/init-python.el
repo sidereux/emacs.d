@@ -10,6 +10,7 @@
 (add-hook 'python-mode-hook 'anaconda-eldoc-mode)
 
 (require-package 'pyvenv)
+(require-package 'yapfify)
 
 
 (provide 'init-python)
