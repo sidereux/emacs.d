@@ -101,4 +101,7 @@
 ;; set font to ubuntu mono
 ;; (set-frame-font "ubuntu mono")
 
+;; fix python error "Invalid coding system 'UTF-8' is specified"
+(define-coding-system-alias 'UTF-8 'utf-8)
+
 (provide 'init-common)
