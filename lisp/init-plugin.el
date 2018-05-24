@@ -23,7 +23,6 @@
 (require-package 'company)
 (require-package 'company-c-headers)
 (require-package 'company-anaconda)
-(require-package 'company-go)
 
 (require 'company-go)
 

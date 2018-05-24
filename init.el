@@ -62,6 +62,7 @@ or NO-REFRESH is true, local package info will not be refreshed"
 (require 'init-javascript)
 (require 'init-coffee)
 (require 'init-terminal)
+(require 'init-rust)
 (require 'init-golang)
 (require 'init-vc)
 (require 'init-org)

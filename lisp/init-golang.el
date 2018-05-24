@@ -7,7 +7,7 @@
 ;;
 ;; # Set http_proxy and https_proxy environment variable when run 'go get'
 ;;
-;; go get -u -v github.com/nsf/gocode
+;; go get -u -v github.com/mdempsky/gocode
 ;; go get -u -v github.com/rogpeppe/godef
 ;;
 ;; go get -u -v github.com/golang/mock/gomock

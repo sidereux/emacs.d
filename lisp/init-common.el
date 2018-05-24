@@ -45,6 +45,8 @@
 (setq windmove-wrap-around t)
 
 ;; Make '_' a word character
+(add-hook 'prog-mode-hook
+          (lambda () (modify-syntax-entry ?_ "w" prog-mode-syntax-table)))
 (add-hook 'sh-mode-hook
           (lambda () (modify-syntax-entry ?_ "w" sh-mode-syntax-table)))
 (add-hook 'perl-mode-hook
