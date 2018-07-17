@@ -10,6 +10,10 @@
 (setq typescript-indent-level 2)
 (setq tide-format-options '(:indentSize 2 :tabSize 2))
 
+;; make '_' a word character
+(add-hook 'typescript-mode-hook
+          (lambda () (modify-syntax-entry ?_ "w" typescript-mode-syntax-table)))
+
 (add-hook 'typescript-mode-hook '(lambda () (add-hook 'before-save-hook 'tide-format-before-save)))
 (add-hook 'typescript-mode-hook 'my:tide-setup)
 
