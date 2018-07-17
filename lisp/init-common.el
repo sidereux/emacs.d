@@ -76,9 +76,9 @@
 
 ;; which function mode
 (which-function-mode t)
-;; (eval-after-load "which-function"
-;;   '(setq which-func-modes '(c-mode c++-mode python-mode)))
-(setq which-func-modes '(c-mode c++-mode python-mode))
+;; do not enable which-function-mode for python-mode,
+;; it can be very slow for large python files.
+(setq which-func-modes '(c-mode c++-mode))
 
 ;; make speedbar support golang
 (add-hook 'speedbar-load-hook
