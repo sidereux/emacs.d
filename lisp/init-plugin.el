@@ -18,13 +18,15 @@
 (require 'go-mode)
 (require 'go-eldoc)
 
-
 ;;; company-mode - Modular in-buffer completion framework
 (require-package 'company)
 (require-package 'company-c-headers)
 (require-package 'company-anaconda)
 
+(require 'anaconda-mode)
 (require 'company-go)
+(require 'company-anaconda)
+
 
 ;; run 'gcc -xc++ -E -v -'
 (setq company-c-headers-path-system
@@ -55,17 +57,26 @@
             (setq company-echo-delay 0)
             (progn
               (add-to-list 'company-backends 'company-c-headers)
-              (add-to-list 'company-backends 'company-anaconda)
               (add-to-list 'company-backends 'company-go)
               )))
+
+(eval-after-load "company"
+  '(add-to-list 'company-backends 'company-anaconda))
 
 
 ;;; Highlight Indentation
 (require-package 'highlight-indent-guides)
-(add-hook 'prog-mode-hook 'highlight-indent-guides-mode)
-(add-hook 'yaml-mode-hook 'highlight-indent-guides-mode)
-(add-hook 'xml-mode-hook 'highlight-indent-guides-mode)
-(add-hook 'nxml-mode-hook 'highlight-indent-guides-mode)
+;;(add-hook 'prog-mode-hook 'highlight-indent-guides-mode)
+;;(add-hook 'yaml-mode-hook 'highlight-indent-guides-mode)
+;;(add-hook 'xml-mode-hook 'highlight-indent-guides-mode)
+;;(add-hook 'nxml-mode-hook 'highlight-indent-guides-mode)
+
+;;; Highlight Indentation
+(require-package 'highlight-indentation)
+(add-hook 'prog-mode-hook 'highlight-indentation-mode)
+(add-hook 'yaml-mode-hook 'highlight-indentation-mode)
+(add-hook 'xml-mode-hook 'highlight-indentation-mode)
+(add-hook 'nxml-mode-hook 'highlight-indentation-mode)
 
 
 ;;; Uniquify - Making buffer names unique
