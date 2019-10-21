@@ -1,20 +1,6 @@
 ;;; package --- Summary:
 
 ;;; Commentary:
-;; export GO111MODULE=on
-;; export GOPROXY=https://goproxy.io
-;;
-;; go get -u -v golang.org/x/tools/cmd/goimports
-;; go get -u -v golang.org/x/lint/golint
-;; go get -u -v github.com/kisielk/errcheck
-;;
-;; # Set http_proxy and https_proxy environment variable when run 'go get'
-;;
-;; go get -u -v github.com/mdempsky/gocode
-;; go get -u -v github.com/rogpeppe/godef
-;;
-;; go get -u -v github.com/golang/mock/gomock
-;; go get -u -v github.com/golang/mock/mockgen
 
 ;;; Code:
 (add-hook 'go-mode-hook 'go-eldoc-setup)
