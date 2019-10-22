@@ -195,3 +195,7 @@
 (add-to-list 'auto-mode-alist '("\\.html\\'" . web-mode))
 (add-hook 'web-mode-hook (lambda () (setq web-mode-markup-indent-offset 2)))
 
+
+;;; lua-mode
+(add-hook 'lua-mode-hook
+          (lambda () (modify-syntax-entry ?_ "w" lua-mode-syntax-table)))
