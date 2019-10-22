@@ -1,0 +1,6 @@
+* Setup snippets submodule
+
+#+BEGIN_SRC bash
+git submodule update --init --recursive
+#+END_SRC
+
