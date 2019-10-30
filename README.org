@@ -4,3 +4,13 @@
 git submodule update --init --recursive
 #+END_SRC
 
+
+* Change font
+#+BEGIN_SRC lisp
+(set-face-attribute 'default nil :font FONT )
+(set-frame-font FONT nil t)
+
+; change font to Ubuntu Mono size 18
+(set-face-attribute 'default nil :font "Ubuntu Mono-18")
+(set-frame-font "Ubuntu Mono-18" nil t)
+#+END_SRC
