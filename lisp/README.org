@@ -7,7 +7,9 @@ go get -u -v golang.org/x/tools/cmd/goimports
 go get -u -v golang.org/x/lint/golint
 go get -u -v github.com/kisielk/errcheck
 
-go get -u -v github.com/mdempsky/gocode
+# Do not use the -u flag, as it will update your dependencies to incompatible versions.
+# https://github.com/golang/tools/tree/master/gopls
+go get -v golang.org/x/tools/gopls@latest
 go get -u -v github.com/rogpeppe/godef
 
 go get -u -v github.com/golang/mock/gomock

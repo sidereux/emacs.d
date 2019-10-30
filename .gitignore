@@ -18,3 +18,4 @@ smex-items
 tutorial
 /anaconda-mode
 /tramp
+/.lsp-session-*

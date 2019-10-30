@@ -1,5 +1,9 @@
 ;;; init-plugin.el --- common plugins
 
+;;; use-package
+(require-package 'use-package)
+(require 'use-package)
+
 ;;; Theme
 (require-package 'color-theme-sanityinc-tomorrow)
 (require 'color-theme-sanityinc-tomorrow)
@@ -24,7 +28,7 @@
 (require-package 'company-anaconda)
 
 (require 'anaconda-mode)
-(require 'company-go)
+;(require 'company-go)
 (require 'company-anaconda)
 
 
@@ -57,7 +61,7 @@
             (setq company-echo-delay 0)
             (progn
               (add-to-list 'company-backends 'company-c-headers)
-              (add-to-list 'company-backends 'company-go)
+              ;(add-to-list 'company-backends 'company-go)
               )))
 
 (eval-after-load "company"

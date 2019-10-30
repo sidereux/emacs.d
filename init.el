@@ -57,6 +57,7 @@ or NO-REFRESH is true, local package info will not be refreshed"
 (require 'init-evil)
 (require 'init-windows)
 (require 'init-plugin)
+(require 'init-lsp)
 (require 'init-helm)
 (require 'init-ido)
 (require 'init-c)
