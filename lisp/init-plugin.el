@@ -109,16 +109,24 @@
   )
 
 ;;; adoc-mode
-(require-package 'adoc-mode)
-(require 'adoc-mode)
-(add-to-list 'auto-mode-alist (cons "\\.adoc\\'" 'adoc-mode))
-(add-hook 'adoc-mode-hook (lambda() (buffer-face-mode t)))
+(use-package adoc-mode
+  :ensure t
+  :mode "\\.adoc\\'"
+  :config
+  (add-hook 'adoc-mode-hook (lambda() (buffer-face-mode t)))
+  )
 
 ;;; lua-mode
-(require-package 'lua-mode)
-(autoload 'lua-mode "lua-mode" "Lua editing mode." t)
-(add-to-list 'auto-mode-alist '("\\.lua$" . lua-mode))
-(add-to-list 'interpreter-mode-alist '("lua" . lua-mode))
+(use-package lua-mode
+  :ensure t
+  :mode "\\.lua\\'"
+  :config
+  (add-to-list 'auto-mode-alist '("\\.lua$" . lua-mode))
+  (add-to-list 'interpreter-mode-alist '("lua" . lua-mode))
+  (add-hook 'lua-mode-hook
+            (lambda () (modify-syntax-entry ?_ "w" lua-mode-syntax-table)))
+  (setq lua-indent-level 4)
+  )
 
 ;;; cmake-mode
 (require-package 'cmake-mode)
@@ -201,8 +209,3 @@
 (require 'web-mode)
 (add-to-list 'auto-mode-alist '("\\.html\\'" . web-mode))
 (add-hook 'web-mode-hook (lambda () (setq web-mode-markup-indent-offset 2)))
-
-
-;;; lua-mode
-(add-hook 'lua-mode-hook
-          (lambda () (modify-syntax-entry ?_ "w" lua-mode-syntax-table)))
