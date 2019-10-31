@@ -1,8 +1,7 @@
-;;; package --- Summary:
-
+;;; init-golang --- golang config
 ;;; Commentary:
-
 ;;; Code:
+
 (use-package go-mode
   :ensure t
   :mode "\\.go\\'"

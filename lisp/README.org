@@ -1,5 +1,6 @@
 * golang
 
+#+BEGIN_SRC sh
 export GO111MODULE=on
 export GOPROXY=https://goproxy.io
 
@@ -11,3 +12,11 @@ go get -u -v golang.org/x/lint/golint
 
 go get -u -v github.com/golang/mock/gomock
 go get -u -v github.com/golang/mock/mockgen
+#+END_SRC
+
+
+* python
+
+#+BEGIN_SRC sh
+pip install --user pylint yapf python-language-server
+#+END_SRC
