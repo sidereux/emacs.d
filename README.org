@@ -10,7 +10,7 @@ git submodule update --init --recursive
 (set-face-attribute 'default nil :font FONT )
 (set-frame-font FONT nil t)
 
-; change font to Ubuntu Mono size 18
-(set-face-attribute 'default nil :font "Ubuntu Mono-18")
-(set-frame-font "Ubuntu Mono-18" nil t)
+; change font to Ubuntu Mono size 16
+(set-face-attribute 'default nil :font "Ubuntu Mono-16")
+(set-frame-font "Ubuntu Mono-16" nil t)
 #+END_SRC

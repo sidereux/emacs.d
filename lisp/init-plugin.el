@@ -1,18 +1,28 @@
 ;;; init-plugin.el --- common plugins
+;;; Commentary:
+;;; Code:
 
 ;;; use-package
 (require-package 'use-package)
 (require 'use-package)
 
 ;;; Theme
-(require-package 'color-theme-sanityinc-tomorrow)
-(require 'color-theme-sanityinc-tomorrow)
-(load-theme 'sanityinc-tomorrow-night t)
+;(require-package 'color-theme-sanityinc-tomorrow)
+;(require 'color-theme-sanityinc-tomorrow)
+;(load-theme 'sanityinc-tomorrow-night t)
+(use-package color-theme-sanityinc-tomorrow
+  :ensure t
+  :config
+  (load-theme 'sanityinc-tomorrow-night t)
+  )
 
 
 ;;; Anzu
-(require-package 'anzu)
-(global-anzu-mode +1)
+(use-package anzu
+  :ensure t
+  :config
+  (global-anzu-mode t)
+  )
 
 
 ;;; company-mode - Modular in-buffer completion framework
