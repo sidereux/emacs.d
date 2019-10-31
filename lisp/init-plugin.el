@@ -91,10 +91,12 @@
 
 ;;; Flycheck - Modern on the fly syntax checking
 ;; Quick start : http://www.flycheck.org/manual/latest/Quickstart.html
-(require-package 'flycheck)
 ;; Install ShellCheck https://github.com/koalaman/shellcheck/releases
-
-(global-flycheck-mode)
+(use-package flycheck
+  :ensure t
+  :config
+  (global-flycheck-mode)
+  )
 
 
 ;;; Markdown mode

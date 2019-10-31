@@ -71,13 +71,17 @@
 ;; key maps for avy
 (evil-leader/set-key "j" 'avy-goto-char)
 
+;; key maps for python mode
 (evil-leader/set-key-for-mode 'python-mode "d" 'lsp-find-definition)
 (evil-leader/set-key-for-mode 'python-mode "r" 'lsp-find-references)
 
+;; key maps for golang mode
 (evil-leader/set-key-for-mode 'go-mode "d" 'lsp-find-definition)
+(evil-leader/set-key-for-mode 'go-mode "r" 'lsp-find-references)
 
-(evil-leader/set-key-for-mode 'rust-mode "d" 'racer-find-definition)
-(evil-leader/set-key-for-mode 'rust-mode "h" 'racer-describe)
+;; key maps for rust mode
+(evil-leader/set-key-for-mode 'rust-mode "d" 'lsp-find-definition)
+(evil-leader/set-key-for-mode 'rust-mode "r" 'lsp-find-references)
 
 
 (provide 'init-evil)

@@ -15,6 +15,14 @@ go get -u -v github.com/golang/mock/mockgen
 #+END_SRC
 
 
+* rust
+
+#+BEGIN_SRC sh
+rustup update
+rustup component add rls rust-analysis rust-src
+#+END_SRC
+
+
 * python
 
 #+BEGIN_SRC sh
