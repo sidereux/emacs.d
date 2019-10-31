@@ -55,7 +55,6 @@ or NO-REFRESH is true, local package info will not be refreshed"
 
 ;; load init-elpa before init-auto-complete
 (require 'init-evil)
-(require 'init-windows)
 (require 'init-plugin)
 (require 'init-lsp)
 (require 'init-helm)

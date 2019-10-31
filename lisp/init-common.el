@@ -106,4 +106,7 @@
 ;; fix python error "Invalid coding system 'UTF-8' is specified"
 (define-coding-system-alias 'UTF-8 'utf-8)
 
+;; Navigate window layouts with "C-c left" and "C-c right"
+(winner-mode 1)
+
 (provide 'init-common)
