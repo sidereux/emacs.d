@@ -15,20 +15,12 @@
 (global-anzu-mode +1)
 
 
-;;; golang support - required by company-go
-(require-package 'go-mode)
-(require-package 'go-eldoc)
-
-(require 'go-mode)
-(require 'go-eldoc)
-
 ;;; company-mode - Modular in-buffer completion framework
 (require-package 'company)
 (require-package 'company-c-headers)
 (require-package 'company-anaconda)
 
 (require 'anaconda-mode)
-;(require 'company-go)
 (require 'company-anaconda)
 
 
@@ -61,7 +53,6 @@
             (setq company-echo-delay 0)
             (progn
               (add-to-list 'company-backends 'company-c-headers)
-              ;(add-to-list 'company-backends 'company-go)
               )))
 
 (eval-after-load "company"
@@ -97,13 +88,13 @@
 
 
 ;;; Markdown mode
-(require-package 'markdown-mode)
-
-(autoload 'markdown-mode "markdown-mode"
-   "Major mode for editing Markdown files" t)
-(add-to-list 'auto-mode-alist '("\\.text\\'" . markdown-mode))
-(add-to-list 'auto-mode-alist '("\\.markdown\\'" . markdown-mode))
-(add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode))
+(use-package markdown-mode
+  :ensure t
+  :mode "\\.md\\'"
+  :config
+  (add-hook 'markdown-mode-hook
+            (lambda () (modify-syntax-entry ?_ "w" markdown-mode-syntax-table)))
+  )
 
 ;;; adoc-mode
 (require-package 'adoc-mode)

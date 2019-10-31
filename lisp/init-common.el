@@ -1,4 +1,6 @@
 ;;; init-common.el --- common settings
+;;; Commentary:
+;;; Code:
 
 ;; Save the cursor posision
 (require 'saveplace)
@@ -51,8 +53,6 @@
           (lambda () (modify-syntax-entry ?_ "w" sh-mode-syntax-table)))
 (add-hook 'perl-mode-hook
           (lambda () (modify-syntax-entry ?_ "w" perl-mode-syntax-table)))
-(add-hook 'markdown-mode-hook
-          (lambda () (modify-syntax-entry ?_ "w" markdown-mode-syntax-table)))
 
 ;; Autopairing
 (electric-pair-mode t)
