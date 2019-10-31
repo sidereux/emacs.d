@@ -5,7 +5,7 @@
 ;;; Code:
 (add-hook 'go-mode-hook #'lsp-deferred)
 
-(add-hook 'go-mode-hook 'go-eldoc-setup)
+;(add-hook 'go-mode-hook 'go-eldoc-setup)
 
 (add-hook 'go-mode-hook '(lambda () (add-hook 'before-save-hook 'gofmt-before-save nil t)))
 

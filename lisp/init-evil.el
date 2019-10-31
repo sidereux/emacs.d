@@ -68,7 +68,8 @@
 (evil-leader/set-key "j" 'avy-goto-char)
 
 (evil-leader/set-key-for-mode 'python-mode "d" 'anaconda-mode-find-definitions)
-(evil-leader/set-key-for-mode 'go-mode "d" 'godef-jump)
+;(evil-leader/set-key-for-mode 'go-mode "d" 'godef-jump)
+(evil-leader/set-key-for-mode 'go-mode "d" 'lsp-find-definition)
 (evil-leader/set-key-for-mode 'rust-mode "d" 'racer-find-definition)
 (evil-leader/set-key-for-mode 'rust-mode "h" 'racer-describe)
 (evil-leader/set-key-for-mode 'python-mode "r" 'anaconda-mode-find-references)
