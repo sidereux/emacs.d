@@ -14,3 +14,17 @@ git submodule update --init --recursive
 (set-face-attribute 'default nil :font "Ubuntu Mono-16")
 (set-frame-font "Ubuntu Mono-16" nil t)
 #+END_SRC
+
+* support fcitx
+#+BEGIN_SRC sh
+# Add to ~/.xprofile
+# edit /etc/locale.gen and run locale-gen first
+export LC_CTYPE=zh_CN.UTF-8
+export XMODIFIERS=@im=fcitx
+export QT_IM_MODULE=fcitx
+export GTK_IM_MODULE=fcitx
+#+END_SRC
+
+#+BEGIN_SRC lisp
+(global-unset-key (kbd "C-SPC"))
+#+END_SRC
