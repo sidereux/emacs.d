@@ -3,7 +3,10 @@
 ;;; Code:
 (use-package lsp-mode
   :ensure t
-  :commands (lsp lsp-deferred))
+  :commands (lsp lsp-deferred)
+  :config
+  (setq-default lsp-prefer-flymake nil)
+  )
 (use-package lsp-ui
   :ensure t
   :commands lsp-ui-mode)
