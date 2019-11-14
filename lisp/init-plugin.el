@@ -26,67 +26,42 @@
 
 
 ;;; company-mode - Modular in-buffer completion framework
-(require-package 'company)
-(require-package 'company-c-headers)
-(require-package 'company-anaconda)
+(use-package company
+  :ensure t
+  :init
+  (add-hook 'after-init-hook 'global-company-mode)
+  :config
+  ;; (setq company-dabbrev-downcase nil)
+  ;;; remove annoying blinking
+  ;;(setq company-echo-delay 0)
+  )
 
-(require 'anaconda-mode)
-(require 'company-anaconda)
 
-
-;; run 'gcc -xc++ -E -v -'
-(setq company-c-headers-path-system
-      '(
-        "/usr/include/c++/5"
-        "/usr/include/x86_64-linux-gnu/c++/5"
-        "/usr/include/c++/5/backward"
-        "/usr/lib/gcc/x86_64-linux-gnu/5/include"
-        "/usr/local/include"
-        "/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed"
-        "/usr/include/x86_64-linux-gnu"
-        "/usr/include"
-        ))
-
-;; (setq company-clang-arguments
-;;       '("-I/usr/include/"
-;;         "-I/usr/local/include/"
-;;         "-I/usr/include/x86_64-linux-gnu/"))
-
-(global-set-key (kbd "C-c f") 'company-files)
-
-(setq company-dabbrev-downcase nil)
-
-(add-hook 'after-init-hook 'global-company-mode)
-(add-hook 'global-company-mode-hook
-          (lambda ()
-            ;; remove annoying blinking
-            (setq company-echo-delay 0)
-            (progn
-              (add-to-list 'company-backends 'company-c-headers)
-              )))
-
-(eval-after-load "company"
-  '(add-to-list 'company-backends 'company-anaconda))
+;;; complete c/c++ headers
+(use-package company-c-headers
+  :ensure t
+  :config
+  (add-to-list 'company-backends 'company-c-headers)
+  )
 
 
 ;;; Highlight Indentation
-(require-package 'highlight-indent-guides)
-;;(add-hook 'prog-mode-hook 'highlight-indent-guides-mode)
-;;(add-hook 'yaml-mode-hook 'highlight-indent-guides-mode)
-;;(add-hook 'xml-mode-hook 'highlight-indent-guides-mode)
-;;(add-hook 'nxml-mode-hook 'highlight-indent-guides-mode)
-
-;;; Highlight Indentation
-(require-package 'highlight-indentation)
-(add-hook 'prog-mode-hook 'highlight-indentation-mode)
-(add-hook 'yaml-mode-hook 'highlight-indentation-mode)
-(add-hook 'xml-mode-hook 'highlight-indentation-mode)
-(add-hook 'nxml-mode-hook 'highlight-indentation-mode)
-
+(use-package highlight-indentation
+  :ensure t
+  :init
+  (add-hook 'prog-mode-hook 'highlight-indentation-mode)
+  (add-hook 'yaml-mode-hook 'highlight-indentation-mode)
+  (add-hook 'xml-mode-hook 'highlight-indentation-mode)
+  (add-hook 'nxml-mode-hook 'highlight-indentation-mode)
+  (add-hook 'python-mode-hook 'highlight-indentation-mode)
+  )
 
 ;;; Uniquify - Making buffer names unique
-(require 'uniquify)
-(setq uniquify-buffer-name-style 'post-forward)
+(use-package uniquify
+  :config
+  (setq uniquify-buffer-name-style 'post-forward)
+  )
+
 
 
 ;;; Flycheck - Modern on the fly syntax checking
@@ -129,18 +104,28 @@
   )
 
 ;;; cmake-mode
-(require-package 'cmake-mode)
+(use-package cmake-mode
+  :ensure t
+  )
 
 ;;; rainbow-delimiters
-(require-package 'rainbow-delimiters)
-(add-hook 'emacs-lisp-mode-hook 'rainbow-delimiters-mode)
+(use-package rainbow-delimiters
+  :ensure t
+  :init
+  (add-hook 'emacs-lisp-mode-hook 'rainbow-delimiters-mode)
+  )
 
 ;;; avy-mode
-(require-package 'avy)
+(use-package avy
+  :ensure t
+  )
 
 ;;; window-numbering
-(require-package 'window-numbering)
-(window-numbering-mode t)
+(use-package window-numbering
+  :ensure t
+  :config
+  (window-numbering-mode t)
+  )
 
 ;;; lemon-mode
 (require-package 'lemon-mode)
@@ -166,11 +151,12 @@
 
 
 ;;; yaml-mode
-(require-package 'yaml-mode)
-;; make '_' as a word character
-(add-hook 'yaml-mode-hook
-          (lambda () (modify-syntax-entry ?_ "w" yaml-mode-syntax-table)))
-(add-to-list 'auto-mode-alist '("\\.yml$" . yaml-mode))
+(use-package yaml-mode
+  :ensure t
+  :mode "\\.yml\\'"
+  :config
+  (lambda () (modify-syntax-entry ?_ "w" yaml-mode-syntax-table))
+  )
 
 
 ;;; fic-mode
@@ -201,7 +187,6 @@
 ;; (require-package 'plantuml-mode)
 (require 'plantuml-mode)
 (add-to-list 'auto-mode-alist '("\\.plantuml\\'" . plantuml-mode))
-(provide 'init-plugin)
 
 
 ;;; web-mode
@@ -209,3 +194,6 @@
 (require 'web-mode)
 (add-to-list 'auto-mode-alist '("\\.html\\'" . web-mode))
 (add-hook 'web-mode-hook (lambda () (setq web-mode-markup-indent-offset 2)))
+
+(provide 'init-plugin)
+;;; init-plugin.el ends here
