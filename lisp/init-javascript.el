@@ -10,14 +10,14 @@
 (add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
 
 ;; Set javascript indents to 2 spaces
-(setq js-indent-level 2)
+(setq js-indent-level 4)
 
 ;; make '_' a word character
 (add-hook 'js2-mode-hook
           (lambda () (modify-syntax-entry ?_ "w" js2-mode-syntax-table)))
 
 ;; set js2-mode indent
-(setq js2-basic-offset 2)
+(setq js2-basic-offset 4)
 
 ;; enable rainbow-delimiters
 (add-hook 'js2-mode-hook 'rainbow-delimiters-mode)
