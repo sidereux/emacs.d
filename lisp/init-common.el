@@ -2,6 +2,9 @@
 ;;; Commentary:
 ;;; Code:
 
+;; Frame title
+(setq-default frame-title-format '("%f [%m]"))
+
 ;; Save the cursor posision
 (require 'saveplace)
 (setq-default save-place t)
