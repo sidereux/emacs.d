@@ -2,89 +2,82 @@
 ;;; Commentary:
 ;;; Code:
 
-(require-package 'evil)
-(require-package 'evil-leader)
-(require-package 'evil-surround)
 
-(require 'evil)
-(require 'evil-leader)
-(require 'evil-surround)
+(use-package evil
+  :ensure t
+  :config
+  (evil-mode t)
 
-(evil-mode 1)
-(global-evil-leader-mode)
-(global-evil-surround-mode t)
+  ;; remap :q[uit] to evil-kill-current-buffer
+  (evil-define-command evil-kill-current-buffer ()
+    "Kill current buffer"
+    (kill-this-buffer))
+  (evil-ex-define-cmd "q[uit]" 'evil-kill-current-buffer)
 
+  ;; remap :wq to evil-save-and-kill-current-buffer
+  (evil-define-command evil-save-and-kill-current-buffer ()
+    "Save and kill current buffer"
+    (save-some-buffers t)
+    (kill-this-buffer))
+  (evil-ex-define-cmd "wq" 'evil-save-and-kill-current-buffer)
 
-;; remap :q[uit] to evil-kill-current-buffer
-(evil-define-command evil-kill-current-buffer ()
-  "Kill current buffer"
-  (kill-this-buffer))
-(evil-ex-define-cmd "q[uit]" 'evil-kill-current-buffer)
+  ;; rewrite evil-save-and-quit
+  ;; remap :wqa[ll] to evil-save-and-quit
+  (evil-define-command evil-save-and-quit ()
+    "Save all buffers and exit emacs"
+    ;; Origional evil-save-and-quit was defined in evil-commmands.el
+    (save-buffers-kill-emacs))
+  (evil-ex-define-cmd "wqa[ll]" 'evil-save-and-quit)
 
-;; remap :wq to evil-save-and-kill-current-buffer
-(evil-define-command evil-save-and-kill-current-buffer ()
-  "Save and kill current buffer"
-  (save-some-buffers t)
-  (kill-this-buffer))
-(evil-ex-define-cmd "wq" 'evil-save-and-kill-current-buffer)
+  ;; remap :x[it] :exi[t] to evil-save-and-kill-current-buffer
+  (evil-ex-define-cmd "x[it]" 'evil-save-and-kill-current-buffer)
+  (evil-ex-define-cmd "exi[t]" "xit")
 
-;; rewrite evil-save-and-quit
-;; remap :wqa[ll] to evil-save-and-quit
-(evil-define-command evil-save-and-quit ()
-  "Save all buffers and exit emacs"
-  ;; Origional evil-save-and-quit was defined in evil-commmands.el
-  (save-buffers-kill-emacs))
-(evil-ex-define-cmd "wqa[ll]" 'evil-save-and-quit)
+  ;; remap :xa[ll] to evil-save-and-quit
+  (evil-ex-define-cmd "xa[ll]" 'evil-save-and-quit)
 
-;; remap :x[it] :exi[t] to evil-save-and-kill-current-buffer
-(evil-ex-define-cmd "x[it]" 'evil-save-and-kill-current-buffer)
-(evil-ex-define-cmd "exi[t]" "xit")
+  ;; remap "ZZ" to evil-save-and-quit
+  (define-key evil-normal-state-map "ZZ" 'evil-save-and-quit)
+  (define-key evil-normal-state-map "ZQ" 'evil-quit-all)
+  )
 
-;; remap :xa[ll] to evil-save-and-quit
-(evil-ex-define-cmd "xa[ll]" 'evil-save-and-quit)
+(use-package evil-surround
+  :ensure t
+  :config
+  (global-evil-surround-mode t)
+  )
 
-;; remap "ZZ" to evil-save-and-quit
-(define-key evil-normal-state-map "ZZ" 'evil-save-and-quit)
-(define-key evil-normal-state-map "ZQ" 'evil-quit-all)
+(use-package evil-leader
+  :ensure t
+  :config
+  (global-evil-leader-mode)
 
+  ;; key maps for helm-gtags
+  (evil-leader/set-key "]" 'helm-gtags-find-tag-from-here)
+  (evil-leader/set-key "[" 'helm-gtags-pop-stack)
+  (evil-leader/set-key "gu" 'helm-gtags-update-tags)
+  (evil-leader/set-key "gt" 'helm-gtags-find-tag)
+  (evil-leader/set-key "gr" 'helm-gtags-find-rtag)
+  (evil-leader/set-key "gp" 'helm-gtags-pop-stack)
 
-;; evil-surround use 's' instead of 'S' for surroundings in visual mode.
-;; which is defferent from vim-surround and may cause confusion.
-;;
-;; origin key bindings:
-;; (define-key evil-normal-state-map "s" 'evil-substitute)
-;; (define-key evil-normal-state-map "S" 'evil-change-whole-line)
-;;
-;; fix:
-;; (evil-define-key 'visual evil-surround-mode-map "s" nil)
-;; (evil-define-key 'visual evil-surround-mode-map "S" 'evil-surround-region)
+  ;; key maps for avy
+  (evil-leader/set-key "j" 'avy-goto-char)
 
+  ;; key maps for python mode
+  (evil-leader/set-key-for-mode 'python-mode "d" 'xref-find-definitions)
+  (evil-leader/set-key-for-mode 'python-mode "3d" 'xref-find-definitions-other-window)
+  (evil-leader/set-key-for-mode 'python-mode "r" 'lsp-find-references)
 
-;; key maps for helm-gtags
-(evil-leader/set-key "]" 'helm-gtags-find-tag-from-here)
-(evil-leader/set-key "[" 'helm-gtags-pop-stack)
-(evil-leader/set-key "gu" 'helm-gtags-update-tags)
-(evil-leader/set-key "gt" 'helm-gtags-find-tag)
-(evil-leader/set-key "gr" 'helm-gtags-find-rtag)
-(evil-leader/set-key "gp" 'helm-gtags-pop-stack)
+  ;; key maps for golang mode
+  (evil-leader/set-key-for-mode 'go-mode "d" 'xref-find-definitions)
+  (evil-leader/set-key-for-mode 'go-mode "3d" 'xref-find-definitions-other-window)
+  (evil-leader/set-key-for-mode 'go-mode "r" 'lsp-find-references)
 
-;; key maps for avy
-(evil-leader/set-key "j" 'avy-goto-char)
-
-;; key maps for python mode
-(evil-leader/set-key-for-mode 'python-mode "d" 'xref-find-definitions)
-(evil-leader/set-key-for-mode 'python-mode "3d" 'xref-find-definitions-other-window)
-(evil-leader/set-key-for-mode 'python-mode "r" 'lsp-find-references)
-
-;; key maps for golang mode
-(evil-leader/set-key-for-mode 'go-mode "d" 'xref-find-definitions)
-(evil-leader/set-key-for-mode 'go-mode "3d" 'xref-find-definitions-other-window)
-(evil-leader/set-key-for-mode 'go-mode "r" 'lsp-find-references)
-
-;; key maps for rust mode
-(evil-leader/set-key-for-mode 'rust-mode "d" 'xref-find-definitions)
-(evil-leader/set-key-for-mode 'rust-mode "3d" 'xref-find-definitions-other-window)
-(evil-leader/set-key-for-mode 'rust-mode "r" 'lsp-find-references)
+  ;; key maps for rust mode
+  (evil-leader/set-key-for-mode 'rust-mode "d" 'xref-find-definitions)
+  (evil-leader/set-key-for-mode 'rust-mode "3d" 'xref-find-definitions-other-window)
+  (evil-leader/set-key-for-mode 'rust-mode "r" 'lsp-find-references)
+  )
 
 
 (provide 'init-evil)
