@@ -14,5 +14,12 @@
   :ensure t
   )
 
+(use-package flycheck-mypy
+  :ensure t
+  :config
+  (add-to-list 'flycheck-disabled-checkers 'python-flake8)
+  (add-to-list 'flycheck-disabled-checkers 'python-pylint)
+  )
+
 (provide 'init-python)
 ;;; init-python.el ends here

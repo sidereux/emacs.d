@@ -26,5 +26,5 @@ rustup component add rls rust-analysis rust-src
 * python
 
 #+BEGIN_SRC sh
-pip install --user pylint yapf python-language-server
+pip install --user pylint yapf python-language-server mypy pyls-mypy
 #+END_SRC

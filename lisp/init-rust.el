@@ -12,7 +12,7 @@
   :mode "\\.rs\\'"
   :config
   (add-hook 'rust-mode-hook #'lsp-deferred)
-  (add-hook 'rust-mode-hook (lambda () (add-hook 'before-save-hook 'rust-format-buffer nil t)))
+  ;(add-hook 'rust-mode-hook (lambda () (add-hook 'before-save-hook 'rust-format-buffer nil t)))
   (add-hook 'rust-mode-hook (lambda () (modify-syntax-entry ?_ "w" rust-mode-syntax-table)))
   )
 (use-package flycheck-rust
