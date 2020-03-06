@@ -50,6 +50,10 @@ or NO-REFRESH is true, local package info will not be refreshed"
 ;; (my:org-babel-load-file "org/init-vc.org")
 ;; (my:org-babel-load-file "org/init-org.org")
 
+;;; use-package
+(require-package 'use-package)
+(require 'use-package)
+
 (require 'init-util)
 (require 'init-common)
 

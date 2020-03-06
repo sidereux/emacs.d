@@ -2,10 +2,6 @@
 ;;; Commentary:
 ;;; Code:
 
-;;; use-package
-(require-package 'use-package)
-(require 'use-package)
-
 ;;; Theme
 ;(require-package 'color-theme-sanityinc-tomorrow)
 ;(require 'color-theme-sanityinc-tomorrow)
@@ -190,10 +186,14 @@
 
 
 ;;; web-mode
-(require-package 'web-mode)
-(require 'web-mode)
-(add-to-list 'auto-mode-alist '("\\.html\\'" . web-mode))
-(add-hook 'web-mode-hook (lambda () (setq web-mode-markup-indent-offset 2)))
+(use-package web-mode
+  :ensure t
+  :mode "\\.html\\'"
+  :config
+  (setq web-mode-enable-auto-closing t)
+  (setq web-mode-enable-auto-pairing t)
+  ;;(add-hook 'web-mode-hook (lambda () (setq web-mode-markup-indent-offset 2)))
+  )
 
 (provide 'init-plugin)
 ;;; init-plugin.el ends here

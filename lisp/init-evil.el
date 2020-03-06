@@ -77,6 +77,11 @@
   (evil-leader/set-key-for-mode 'rust-mode "d" 'xref-find-definitions)
   (evil-leader/set-key-for-mode 'rust-mode "3d" 'xref-find-definitions-other-window)
   (evil-leader/set-key-for-mode 'rust-mode "r" 'lsp-find-references)
+
+  ;; key maps for typescript mode
+  (evil-leader/set-key-for-mode 'typescript-mode "d" 'xref-find-definitions)
+  (evil-leader/set-key-for-mode 'typescript-mode "3d" 'xref-find-definitions-other-window)
+  (evil-leader/set-key-for-mode 'typescript-mode "r" 'lsp-find-references)
   )
 
 
