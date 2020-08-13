@@ -204,5 +204,10 @@
   (define-key projectile-mode-map (kbd "C-x p") 'projectile-command-map)
   )
 
+;;; racket-mode
+(use-package racket-mode
+  :ensure t
+  )
+
 (provide 'init-plugin)
 ;;; init-plugin.el ends here

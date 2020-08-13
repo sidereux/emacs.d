@@ -16,6 +16,7 @@
 /custom.el
 /smex-items
 /projectile-bookmarks.eld
+/projectile.cache
 .python-environments
 ac-comphist.dat
 ede-projects.el
