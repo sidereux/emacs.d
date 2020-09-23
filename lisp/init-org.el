@@ -4,6 +4,8 @@
   )
 
 (use-package org
+  :mode "\\.org\\'"
+  :mode "\\.otxt\\'"
   :config
   (setq-default org-startup-truncated nil)
   (setq-default org-startup-folded nil)
@@ -14,5 +16,7 @@
                 (define-key evil-normal-state-map (kbd "TAB") 'org-cycle)
                 )))
   )
+
+(add-to-list 'auto-mode-alist '("\\.org.txt\\'" . org-mode))
 
 (provide 'init-org)

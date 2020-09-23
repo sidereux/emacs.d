@@ -28,3 +28,9 @@ export GTK_IM_MODULE=fcitx
 #+BEGIN_SRC lisp
 (global-unset-key (kbd "C-SPC"))
 #+END_SRC
+
+* windows
+
+#+BEGIN_SRC sh
+set file coding system `set-buffer-file-coding-system`
+#+END_SRC

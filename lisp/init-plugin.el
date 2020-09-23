@@ -169,10 +169,14 @@
 ;; (ivy-mode t)
 
 
-;;; exec-path-from-shell
 (require-package 'exec-path-from-shell)
-(exec-path-from-shell-initialize)
-(exec-path-from-shell-copy-env "GOPATH")
+;;; exec-path-from-shell
+(if (not (string-equal system-type "windows-nt"))
+    (progn
+      (exec-path-from-shell-initialize)
+      (exec-path-from-shell-copy-env "GOPATH")
+      )
+  )
 
 
 ;;; nginx-mode
