@@ -205,8 +205,13 @@
   )
 
 ;;; racket-mode
-(use-package racket-mode
-  :ensure t
+; too slow
+;(use-package racket-mode
+;  :ensure t
+;  )
+
+(use-package scheme-mode
+  :mode "\\.rkt\\'"
   )
 
 (provide 'init-plugin)
