@@ -4,8 +4,8 @@
   )
 
 (use-package org
-  :mode "\\.org\\'"
-  :mode "\\.otxt\\'"
+  :mode (("\\.org\\'" . org-mode)
+         ("\\.org.txt\\'" . org-mode))
   :config
   (setq-default org-startup-truncated nil)
   (setq-default org-startup-folded nil)
@@ -17,6 +17,6 @@
                 )))
   )
 
-(add-to-list 'auto-mode-alist '("\\.org.txt\\'" . org-mode))
+;(add-to-list 'auto-mode-alist '("\\.org.txt\\'" . org-mode))
 
 (provide 'init-org)
