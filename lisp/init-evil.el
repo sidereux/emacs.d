@@ -5,6 +5,10 @@
 
 (use-package evil
   :ensure t
+  :init
+  ;; change ctrl-z to avoid enter evil-emacs-state
+  (setq evil-toggle-key "C-x e v i l")
+
   :config
   (evil-mode t)
 
