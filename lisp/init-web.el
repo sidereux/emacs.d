@@ -2,7 +2,8 @@
 
 (use-package web-mode
   :ensure t
-  :mode ("\\.html\\'" "\\.css\\'")
+  ;:mode ("\\.html\\'" "\\.css\\'")
+  :mode "\\.html\\'"
   :config
   (setq web-mode-enable-auto-closing t)
   (setq web-mode-enable-auto-pairing t)
@@ -25,6 +26,12 @@
           )
         )
   (add-hook 'web-mode-hook #'lsp-deferred)
+  )
+
+(use-package css-mode
+  :mode "\\.css\\'"
+  :config
+  (add-hook 'css-mode-hook #'lsp-deferred)
   )
 
 (provide 'init-web)
