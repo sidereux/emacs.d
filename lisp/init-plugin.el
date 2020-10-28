@@ -189,16 +189,6 @@
 (add-to-list 'auto-mode-alist '("\\.plantuml\\'" . plantuml-mode))
 
 
-;;; web-mode
-(use-package web-mode
-  :ensure t
-  :mode "\\.html\\'"
-  :config
-  (setq web-mode-enable-auto-closing t)
-  (setq web-mode-enable-auto-pairing t)
-  ;;(add-hook 'web-mode-hook (lambda () (setq web-mode-markup-indent-offset 2)))
-  )
-
 ;;; projectile
 (use-package projectile
   :ensure t

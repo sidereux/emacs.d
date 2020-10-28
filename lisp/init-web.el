@@ -1,18 +1,14 @@
-(require-package 'emmet-mode)
+;;; web-mode
 
-(require 'emmet-mode)
-
-(add-hook 'sgml-mode-hook 'emmet-mode) ;; Auto-start on any markup modes
-(add-hook 'css-mode-hook  'emmet-mode) ;; enable Emmet's css abbreviation.
-
-
-(require-package 'skewer-mode)
-
-(require 'skewer-mode)
-
-(add-hook 'js2-mode-hook 'skewer-mode)
-(add-hook 'css-mode-hook 'skewer-css-mode)
-(add-hook 'html-mode-hook 'skewer-html-mode)
-
+(use-package web-mode
+  :ensure t
+  :mode ("\\.html\\'" "\\.css\\'")
+  :config
+  (setq web-mode-enable-auto-closing t)
+  (setq web-mode-enable-auto-pairing t)
+  (setq web-mode-enable-css-colorization t)
+  ;;(add-hook 'web-mode-hook (lambda () (setq web-mode-markup-indent-offset 2)))
+  (add-hook 'web-mode-hook #'lsp-deferred)
+  )
 
 (provide 'init-web)

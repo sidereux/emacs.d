@@ -24,7 +24,6 @@ rustup component add rls rust-analysis rust-src
 
 
 * python
-
 #+BEGIN_SRC sh
 pip install --user pylint yapf python-language-server mypy pyls-mypy
 #+END_SRC
@@ -34,4 +33,27 @@ pip install --user pylint yapf python-language-server mypy pyls-mypy
 npm config set registry https://registry.npm.taobao.org
 npm install -g typescript
 npm install -g typescript-language-server
+#+END_SRC
+
+* angular
+#+BEGIN_SRC sh
+npm install -g @angular/cli @angular/language-service@next @angular/language-server typescript
+(setq lsp-clients-angular-language-server-command
+  '("node"
+    "/usr/lib/node_modules/@angular/language-server"
+    "--ngProbeLocations"
+    "/usr/lib/node_modules"
+    "--tsProbeLocations"
+    "/usr/lib/node_modules"
+    "--stdio"))
+#+END_SRC
+
+* css
+#+BEGIN_SRC sh
+npm install -g vscode-css-languageserver-bin
+#+END_SRC
+
+* html
+#+BEGIN_SRC sh
+npm install -g vscode-html-languageserver-bin
 #+END_SRC
