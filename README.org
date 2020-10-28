@@ -32,11 +32,11 @@ export GTK_IM_MODULE=fcitx
 * windows
 
 #+BEGIN_SRC elisp
-;set file coding system set-buffer-file-coding-system
+;convert buffer to coding system: revert-buffer-with-coding-system
+;set file coding system: set-buffer-file-coding-system
 
 ; 文泉驿等宽微米黑 http://wenq.org/wqy2/index.cgi?MicroHei
 ; check font name: M-x counsel-fonts
 (set-face-attribute 'default nil :font "文泉驿等宽微米黑-14")
 (set-frame-font "文泉驿等宽微米黑-14" nil t)
 #+END_SRC
-

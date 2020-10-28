@@ -38,6 +38,10 @@ npm install -g typescript-language-server
 * angular
 #+BEGIN_SRC sh
 npm install -g @angular/cli @angular/language-service@next @angular/language-server typescript
+#+END_SRC
+
+#+BEGIN_SRC elisp
+;; default value
 (setq lsp-clients-angular-language-server-command
   '("node"
     "/usr/lib/node_modules/@angular/language-server"
@@ -47,6 +51,12 @@ npm install -g @angular/cli @angular/language-service@next @angular/language-ser
     "/usr/lib/node_modules"
     "--stdio"))
 #+END_SRC
+
+#+BEGIN_SRC elisp
+;;set my:node-modules-dir in custom.el
+(setq my:node-modules-dir (expand-file-name "~/pkg/node/lib/node_modules"))
+#+END_SRC
+
 
 * css
 #+BEGIN_SRC sh
